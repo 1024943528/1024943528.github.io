@@ -86,7 +86,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li>*长度任意字符</li>
+<li>？长度为1的字符串</li>
+</ul>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><ul>
+<li>. 匹配楚换行符以外的任意字符</li>
+<li>\w 匹配字母或数字或下划线或汉字</li>
+<li>\s 匹配任意的空白符</li>
+<li>\d 匹配数字</li>
+<li>\b 匹配单词的开始或结束</li>
+<li>^ 匹配字符串的开始</li>
+<li>$ 匹配字符串的结束</li>
+</ul>
+<h2 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h2><ul>
+<li>\W 匹配任意不是 字母或数字或下划线或汉字的字符</li>
+<li>\S 匹配任意不是空白符的字符</li>
+<li>\D 匹配任意非数字的字符</li>
+<li>\B 匹配不是单词词的开始或结束的位置</li>
+<li>[^x] 匹配除了x以外的任意字符</li>
+<li>[^aeiou] 匹配除了aeiou者几个字母以外的任意字符</li>
+</ul>
+<h2 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h2><ul>
+<li>.</li>
+<li>?</li>
+<li>*</li>
+</ul>
+<h2 id="正则表达式中的注释"><a href="#正则表达式中的注释" class="headerlink" title="正则表达式中的注释"></a>正则表达式中的注释</h2><ul>
+<li>启用忽略模式里的空白符</li>
+<li>(?&lt;= 断言要匹配的文本的前缀</li>
+<li>&lt;(\w+)&gt; 查找尖括号括起来的字母或数字(html/xml标签</li>
+<li>) 前缀结束</li>
+<li>.* 匹配任意文本</li>
+<li>(?= 断言要匹配的文本的后缀</li>
+<li>&lt;/\1&gt; 查找尖括号括起来的内容</li>
+<li>) 后缀结束</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -122,7 +158,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="ts提供的数据类型"><a href="#ts提供的数据类型" class="headerlink" title="ts提供的数据类型"></a>ts提供的数据类型</h3><ul>
+<li>boolean</li>
+<li>number</li>
+<li>string</li>
+<li>array</li>
+<li>tuple(元祖类型)</li>
+<li>enum（枚举类型）</li>
+<li>any（任意类型）</li>
+<li>null</li>
+<li>undefined</li>
+<li>void</li>
+<li>never</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr:number[]&#x3D;[1,2,3]&#x2F;&#x2F;指定什么类型就只能放什么类型</span><br><span class="line">let arr:Array&lt;number&gt;&#x3D;[1,2,3]</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
