@@ -7,13 +7,15 @@
   
   <title>Redux | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="基本概念和 API 3.1 Store   Store 就是保存数据的地方，你可以把它看成一个容器。整个应用只能有一个 Store。Redux 提供createStore这个函数，用来生成 Store。  1234import &amp;#123; createStore &amp;#125; from &amp;#x27;redux&amp;#x27;;const store &#x3D; createStore(fn);   3.2">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Redux">
 <meta property="og:url" content="http://example.com/2021/01/02/Redux/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本概念和 API 3.1 Store   Store 就是保存数据的地方，你可以把它看成一个容器。整个应用只能有一个 Store。Redux 提供createStore这个函数，用来生成 Store。  1234import &amp;#123; createStore &amp;#125; from &amp;#x27;redux&amp;#x27;;const store &#x3D; createStore(fn);   3.2">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-02T10:17:23.000Z">
-<meta property="article:modified_time" content="2021-01-02T10:45:56.349Z">
+<meta property="article:modified_time" content="2021-03-01T12:48:59.287Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -86,11 +88,111 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="基本概念和-API"><a href="#基本概念和-API" class="headerlink" title="基本概念和 API"></a>基本概念和 API</h3><ul>
+<li>3.1 Store</li>
+</ul>
+<blockquote>
+<p>Store 就是保存数据的地方，你可以把它看成一个容器。整个应用只能有一个 Store。Redux 提供createStore这个函数，用来生成 Store。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(fn);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.2 State</li>
+</ul>
+<blockquote>
+<p>Store对象包含所有数据。如果想得到某个时点的数据，就要对 Store 生成快照。这种时点的数据集合，就叫做 State。<br>当前时刻的 State，可以通过store.getState()拿到</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(fn);</span><br><span class="line"><span class="keyword">const</span> state = store.getState();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。你知道 State，就知道 View 是什么样，反之亦然。</p>
+</li>
+<li><p>3.3 Action</p>
+</li>
+</ul>
+<blockquote>
+<p>state 的变化，会导致 View 的变化。但是，用户接触不到 State，只能接触到 View。所以，State 的变化必须是 View 导致的。Action 就是 View 发出的通知，表示 State 应该要发生变化了。<br>可以这样理解，Action 描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">  type: <span class="string">&#x27;ADD_TODO&#x27;</span>,</span><br><span class="line">  payload: <span class="string">&#x27;Learn Redux&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.4 Action Creator</li>
+</ul>
+<blockquote>
+<p>View 要发送多少种消息，就会有多少种 Action。如果都手写，会很麻烦。可以定义一个函数来生成 Action，这个函数就叫 Action Creator。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> ADD_TODO = <span class="string">&#x27;添加 TODO&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: ADD_TODO,</span><br><span class="line">    text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> action = addTodo(<span class="string">&#x27;Learn Redux&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3.5 store.dispatch()</p>
+</li>
+<li><p>store.dispatch()是 View 发出 Action 的唯一方法。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(fn);</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: <span class="string">&#x27;ADD_TODO&#x27;</span>,</span><br><span class="line">  payload: <span class="string">&#x27;Learn Redux&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.6 Reducer</li>
+<li>Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> defaultState = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = defaultState, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;ADD&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> state + action.payload;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = reducer(<span class="number">1</span>, &#123;</span><br><span class="line">  type: <span class="string">&#x27;ADD&#x27;</span>,</span><br><span class="line">  payload: <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实际应用中，Reducer 函数不用像上面这样手动调用，store.dispatch方法会触发 Reducer 的自动执行。为此，Store 需要知道 Reducer 函数，做法就是在生成 Store 的时候，将 Reducer 传入createStore方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面代码中，createStore接受 Reducer 作为参数，生成一个新的 Store。以后每当store.dispatch发送过来一个新的 Action，就会自动调用 Reducer，得到新的 State</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> actions = [</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">&#x27;ADD&#x27;</span>, <span class="attr">payload</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">&#x27;ADD&#x27;</span>, <span class="attr">payload</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">&#x27;ADD&#x27;</span>, <span class="attr">payload</span>: <span class="number">2</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> total = actions.reduce(reducer, <span class="number">0</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面代码中，数组actions表示依次有三个 Action，分别是加0、加1和加2。数组的reduce方法接受 Reducer 函数作为参数，就可以直接得到最终的状态3。</li>
+</ul>
+<p>3.7 纯函数</p>
+<ul>
+<li>reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出。<br>纯函数是函数式编程的概念，必须遵守以下一些约束。</li>
+</ul>
+<blockquote>
+<p>不得改写参数<br>不能调用系统 I/O 的API<br>不能调用Date.now()或者Math.random()等不纯的方法，因为每次会得到不一样的结果</p>
+</blockquote>
+<ul>
+<li>由于 Reducer 是纯函数，就可以保证同样的State，必定得到同样的 View。但也正因为这一点，Reducer 函数里面不能改变 State，必须返回一个全新的对象，请参考下面的写法。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// State 是一个对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123; thingToChange &#125;);</span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line">  <span class="keyword">return</span> &#123; ...state, ...newState &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// State 是一个数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...state, newItem];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象</li>
+</ul>
+<p>3.8 store.subscribe()</p>
+<ul>
+<li>Store 允许使用store.subscribe方法设置监听函数，一旦 State 发生变化，就自动执行这个函数。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br><span class="line"></span><br><span class="line">store.subscribe(listener);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>store.subscribe方法返回一个函数，调用这个函数就可以解除监听。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unsubscribe = store.subscribe(<span class="function">() =&gt;</span></span><br><span class="line">  <span class="built_in">console</span>.log(store.getState())</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">unsubscribe();</span><br></pre></td></tr></table></figure>
+
+<p>四、Store 的实现</p>
+<ul>
+<li>可以发现 Store 提供了三个方法。</li>
+</ul>
+<blockquote>
+<p>store.getState()<br>store.dispatch()<br>store.subscribe()</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> &#123; subscribe, dispatch, getState &#125; = createStore(reducer);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>createStore方法还可以接受第二个参数，表示 State 的最初状态。这通常是服务器给出的。</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/02/Redux/" data-id="ckjgthsbi0003j1si7qsp27p3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/02/Redux/" data-id="ckqhrefs200032xyc0jgxhxsq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -98,6 +200,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2021/01/16/Java/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java从入门到放弃
+        
+      </div>
+    </a>
   
   
     <a href="/2021/01/01/React-Router/" id="article-nav-older" class="article-nav-link-wrap">
@@ -126,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -139,23 +250,23 @@
       <ul>
         
           <li>
-            <a href="/2021/01/02/Redux/">Redux</a>
+            <a href="/2021/03/01/React%E9%9D%A2%E8%AF%95%E9%A2%98/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2021/01/01/React-Router/">React-Router</a>
+            <a href="/2021/03/01/Vue-Router/">vue-router</a>
           </li>
         
           <li>
-            <a href="/2020/12/27/Vue/">(no title)</a>
+            <a href="/2021/03/01/Vuex/">vuex</a>
           </li>
         
           <li>
-            <a href="/2020/12/26/React/">React</a>
+            <a href="/2021/03/01/Git%E5%92%8CSvn/">Git 和 Svn</a>
           </li>
         
           <li>
-            <a href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+            <a href="/2021/02/19/Sass/">Sass使用指南</a>
           </li>
         
       </ul>

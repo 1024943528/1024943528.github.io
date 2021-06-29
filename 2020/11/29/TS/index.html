@@ -7,15 +7,15 @@
   
   <title>TS | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ts提供的数据类型 boolean number string array tuple(元祖类型) enum（枚举类型） any（任意类型） null undefined void never  12let arr:number[]&#x3D;[1,2,3]&#x2F;&#x2F;指定什么类型就只能放什么类型let arr:Array&lt;number&gt;&#x3D;[1,2,3]">
+  <meta name="description" content="ts 提供的数据类型   boolean   number   string   array   tuple(元祖类型)(元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同)   enum（枚举类型）   any（任意类型）(在编程阶段还不清楚类型的变量指定一个类型。)   null,undefined (默认情况下 null 和 undefined 是所有类型的子类型)   vo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TS">
 <meta property="og:url" content="http://example.com/2020/11/29/TS/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ts提供的数据类型 boolean number string array tuple(元祖类型) enum（枚举类型） any（任意类型） null undefined void never  12let arr:number[]&#x3D;[1,2,3]&#x2F;&#x2F;指定什么类型就只能放什么类型let arr:Array&lt;number&gt;&#x3D;[1,2,3]">
+<meta property="og:description" content="ts 提供的数据类型   boolean   number   string   array   tuple(元祖类型)(元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同)   enum（枚举类型）   any（任意类型）(在编程阶段还不清楚类型的变量指定一个类型。)   null,undefined (默认情况下 null 和 undefined 是所有类型的子类型)   vo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T05:47:17.000Z">
-<meta property="article:modified_time" content="2020-11-29T05:55:32.002Z">
+<meta property="article:modified_time" content="2021-06-29T07:49:03.928Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -88,24 +88,76 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="ts提供的数据类型"><a href="#ts提供的数据类型" class="headerlink" title="ts提供的数据类型"></a>ts提供的数据类型</h3><ul>
-<li>boolean</li>
-<li>number</li>
-<li>string</li>
-<li>array</li>
-<li>tuple(元祖类型)</li>
-<li>enum（枚举类型）</li>
-<li>any（任意类型）</li>
-<li>null</li>
-<li>undefined</li>
-<li>void</li>
-<li>never</li>
+        <h3 id="ts-提供的数据类型"><a href="#ts-提供的数据类型" class="headerlink" title="ts 提供的数据类型"></a>ts 提供的数据类型</h3><ul>
+<li>  boolean</li>
+<li>  number</li>
+<li>  string</li>
+<li>  array</li>
+<li>  tuple(元祖类型)(元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同)</li>
+<li>  enum（枚举类型）</li>
+<li>  any（任意类型）(在编程阶段还不清楚类型的变量指定一个类型。)</li>
+<li>  null,undefined (默认情况下 null 和 undefined 是所有类型的子类型)</li>
+<li>  void (它表示没有任何类型)</li>
+<li>  never (那些永不存在的值的类型)</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr:number[]&#x3D;[1,2,3]&#x2F;&#x2F;指定什么类型就只能放什么类型</span><br><span class="line">let arr:Array&lt;number&gt;&#x3D;[1,2,3]</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">// 元素类型后面接上 []，表示由此类型元素组成的一个数组：</span></span><br><span class="line"><span class="keyword">let</span> arr: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">// 数组泛型，Array&lt;元素类型&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br><span class="line">x = [<span class="string">&quot;hello&quot;</span>, <span class="number">10</span>]; <span class="comment">// OK</span></span><br><span class="line">x = [<span class="number">10</span>, <span class="string">&quot;hello&quot;</span>]; <span class="comment">// Error</span></span><br><span class="line"><span class="comment">//当访问一个越界的元素，会使用联合类型替代：(string | number)类型</span></span><br><span class="line">x[<span class="number">3</span>] = <span class="string">&quot;world&quot;</span>; <span class="comment">// OK, 字符串可以赋值给(string | number)类型</span></span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">5</span>].toString()); <span class="comment">// OK, &#x27;string&#x27; 和 &#x27;number&#x27; 都有 toString</span></span><br><span class="line">x[<span class="number">6</span>] = <span class="literal">true</span>; <span class="comment">// Error, 布尔不是(string | number)类型</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认情况下，从0开始为元素编号</span></span><br><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">    Red = <span class="number">1</span>,</span><br><span class="line">    Green,</span><br><span class="line">    Blue,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> colorName: <span class="built_in">string</span> = Color[<span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(colorName); <span class="comment">// 显示&#x27;Green&#x27;因为上面代码里它的值是2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: <span class="built_in">any</span> = <span class="string">&quot;this is a string&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (&lt;<span class="built_in">string</span>&gt;someValue).length; <span class="comment">//尖括号”语法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> someValue: <span class="built_in">any</span> = <span class="string">&quot;this is a string&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (someValue <span class="keyword">as</span> <span class="built_in">string</span>).length; <span class="comment">//as语法</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="let-声明"><a href="#let-声明" class="headerlink" title="let 声明"></a>let 声明</h2><ul>
+<li>块级作用域<ul>
+<li>  （包含它们的块或 for 循环之外是不能访问的）</li>
+<li>  拥有块级作用域的变量的另一个特点是，它们不能在被声明之前读或写。 虽然这些变量始终“存在”于它们的作用域里，但在直到声明它的代码之前的区域都属于 暂时性死区。 它只是用来说明我们不能在 let 语句之前访问它们，幸运的是 TypeScript 可以告诉我们这些信息。</li>
+</ul>
+</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>  typeScript 的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在 TypeScript 里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> LabelledValue &#123;</span><br><span class="line">    label: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span>(<span class="params">labelledObj: LabelledValue</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(labelledObj.label);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myObj = &#123; <span class="attr">size</span>: <span class="number">10</span>, <span class="attr">label</span>: <span class="string">&quot;Size 10 Object&quot;</span> &#125;;</span><br><span class="line">printLabel(myObj);</span><br></pre></td></tr></table></figure>
+
+<h2 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h2><ul>
+<li>  可选属性的好处之一是可以对可能存在的属性进行预定义，好处之二是可以捕获引用了不存在的属性时的错误。</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SquareConfig &#123;</span><br><span class="line">    color?: <span class="built_in">string</span>;</span><br><span class="line">    width?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createSquare</span>(<span class="params">config: SquareConfig</span>): </span>&#123; color: <span class="built_in">string</span>; area: <span class="built_in">number</span> &#125; &#123;</span><br><span class="line">    <span class="keyword">let</span> newSquare = &#123; <span class="attr">color</span>: <span class="string">&quot;white&quot;</span>, <span class="attr">area</span>: <span class="number">100</span> &#125;;</span><br><span class="line">    <span class="keyword">if</span> (config.clor) &#123;</span><br><span class="line">        <span class="comment">// Error: Property &#x27;clor&#x27; does not exist on type &#x27;SquareConfig&#x27;</span></span><br><span class="line">        newSquare.color = config.clor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (config.width) &#123;</span><br><span class="line">        newSquare.area = config.width * config.width;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newSquare;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(&#123; <span class="attr">color</span>: <span class="string">&quot;black&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h2><ul>
+<li>  一些对象属性只能在对象刚刚创建的时候修改其值。 你可以在属性名前用 readonly 来指定只读属性</li>
+<li>  TypeScript 具有 ReadonlyArray<T>类型，它与 Array<T>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改</li>
+<li>  最简单判断该用 readonly 还是 const 的方法是看要把它做为变量使用还是做为一个属性。 做为变量使用的话用 const，若做为属性则使用 readonly。</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Point &#123;</span><br><span class="line">    <span class="keyword">readonly</span> x: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">readonly</span> y: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> ro: ReadonlyArray&lt;<span class="built_in">number</span>&gt; = a;</span><br><span class="line">ro[<span class="number">0</span>] = <span class="number">12</span>; <span class="comment">// error!</span></span><br><span class="line">ro.push(<span class="number">5</span>); <span class="comment">// error!</span></span><br><span class="line">ro.length = <span class="number">100</span>; <span class="comment">// error!</span></span><br><span class="line">a = ro; <span class="comment">// error!</span></span><br><span class="line">a = ro <span class="keyword">as</span> <span class="built_in">number</span>[]; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="额外的属性检查-3-种方式"><a href="#额外的属性检查-3-种方式" class="headerlink" title="额外的属性检查(3 种方式)"></a>额外的属性检查(3 种方式)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SquareConfig &#123;</span><br><span class="line">    color?: <span class="built_in">string</span>;</span><br><span class="line">    width?: <span class="built_in">number</span>;</span><br><span class="line">    [propName: <span class="built_in">string</span>]: <span class="built_in">any</span>; <span class="comment">//最佳的方式是够添加一个字符串索引签名,前提是你能够确定这个对象可能具有某些做为特殊用途使用的额外属性。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createSquare</span>(<span class="params">config: SquareConfig</span>): </span>&#123; color: <span class="built_in">string</span>; area: <span class="built_in">number</span> &#125; &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// error: &#x27;colour&#x27; not expected in type &#x27;SquareConfig&#x27;</span></span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(&#123; <span class="attr">colour</span>: <span class="string">&quot;red&quot;</span>, <span class="attr">width</span>: <span class="number">100</span> &#125;);</span><br><span class="line"><span class="comment">//绕开这些检查非常简单。 最简便的方法是使用类型断言：</span></span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(&#123; <span class="attr">width</span>: <span class="number">100</span>, <span class="attr">opacity</span>: <span class="number">0.5</span> &#125; <span class="keyword">as</span> SquareConfig);</span><br><span class="line"><span class="comment">//还有最后一种跳过这些检查的方式，这可能会让你感到惊讶，它就是将这个对象赋值给一个另一个变量： 因为 squareOptions不会经过额外属性检查，所以编译器不会报错。</span></span><br><span class="line"><span class="keyword">let</span> squareOptions = &#123; <span class="attr">colour</span>: <span class="string">&quot;red&quot;</span>, <span class="attr">width</span>: <span class="number">100</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(squareOptions);</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><ul>
+<li>  为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。</li>
+<li>  对于函数类型的类型检查来说，函数的参数名不需要与接口里定义的名字相匹配。</li>
+<li>  函数的参数会逐个进行检查，要求对应位置上的参数类型是兼容的</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> SearchFunc &#123;</span><br><span class="line">    (source: <span class="built_in">string</span>, <span class="attr">subString</span>: <span class="built_in">string</span>): <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> mySearch: SearchFunc;</span><br><span class="line">mySearch = <span class="function"><span class="keyword">function</span>(<span class="params">source: <span class="built_in">string</span>, subString: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = source.search(subString);</span><br><span class="line">    <span class="keyword">return</span> result &gt; -<span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="可索引的类型"><a href="#可索引的类型" class="headerlink" title="可索引的类型"></a>可索引的类型</h2><ul>
+<li>  可索引类型具有一个 索引签名，它描述了对象索引的类型，还有相应的索引返回值类型。</li>
+<li>  TypeScript 支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。</li>
+<li>  可以将索引签名设置为只读，这样就防止了给索引赋值</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> StringArray &#123;</span><br><span class="line">    [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myArray: StringArray;</span><br><span class="line">myArray = [<span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Fred&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myStr: <span class="built_in">string</span> = myArray[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    breed: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误：使用数值型的字符串索引，有时会得到完全不同的Animal!</span></span><br><span class="line"><span class="keyword">interface</span> NotOkay &#123;</span><br><span class="line">    [x: <span class="built_in">number</span>]: Animal;</span><br><span class="line">    [x: <span class="built_in">string</span>]: Dog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类类型"><a href="#类类型" class="headerlink" title="类类型"></a>类类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">theName: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = theName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rhino</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;Rhino&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">theName: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = theName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal(<span class="string">&quot;Goat&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> rhino = <span class="keyword">new</span> Rhino();</span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line">animal = rhino;</span><br><span class="line">animal = employee; <span class="comment">// 错误: Animal 与 Employee 不兼容.</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/TS/" data-id="ckjgthsbl0005j1si19q8hu5u" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/TS/" data-id="ckqhrefs500042xycg5s2ds9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,7 +166,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/11/29/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -150,7 +202,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -163,23 +215,23 @@
       <ul>
         
           <li>
-            <a href="/2021/01/02/Redux/">Redux</a>
+            <a href="/2021/03/01/React%E9%9D%A2%E8%AF%95%E9%A2%98/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2021/01/01/React-Router/">React-Router</a>
+            <a href="/2021/03/01/Vue-Router/">vue-router</a>
           </li>
         
           <li>
-            <a href="/2020/12/27/Vue/">(no title)</a>
+            <a href="/2021/03/01/Vuex/">vuex</a>
           </li>
         
           <li>
-            <a href="/2020/12/26/React/">React</a>
+            <a href="/2021/03/01/Git%E5%92%8CSvn/">Git 和 Svn</a>
           </li>
         
           <li>
-            <a href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+            <a href="/2021/02/19/Sass/">Sass使用指南</a>
           </li>
         
       </ul>

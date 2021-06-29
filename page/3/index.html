@@ -5,11 +5,11 @@
   
 
   
-  <title>Archives: 2020/11 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/11/index.html">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -64,171 +64,125 @@
       <div class="outer">
         <section id="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  <time datetime="2020-11-29T05:48:07.000Z" itemprop="datePublished">Nov 29</time>
+    <article id="post-算法整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/01/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" class="article-date">
+  <time datetime="2020-03-01T05:09:28.000Z" itemprop="datePublished">2020-03-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+      <a class="article-title" href="/2020/03/01/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/">算法</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  <time datetime="2020-11-29T05:48:07.000Z" itemprop="datePublished">Nov 29</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">正则表达式</a>
-    </h1>
-  
+        <h3 id="贪心算法，动态规划，分冶"><a href="#贪心算法，动态规划，分冶" class="headerlink" title="贪心算法，动态规划，分冶"></a>贪心算法，动态规划，分冶</h3><ul>
+<li>两数相加（简单）</li>
+</ul>
+<blockquote>
+<ol>
+<li>获取目标值和每个数组下标的差，利用差值寻找到对应的值</li>
+</ol>
+</blockquote>
+<ul>
+<li>两数相加 (中等)</li>
+</ul>
+<blockquote>
+<ol>
+<li>JSON解析ListNode为字符串从字符串中提取出全部数字部分</li>
+<li>反转后即为对应数字的字符串使用BigInt操作数字</li>
+<li>防止溢出将相加后的结果转换为ListNode</li>
+</ol>
+</blockquote>
+<ul>
+<li>无重复字符的最长串（中等）</li>
+</ul>
+<blockquote>
+<ol>
+<li>先判断要加入的符号是否存在</li>
+<li>如果存在就把这个符号和之前的符号删除</li>
+<li>添加当前的符号</li>
+<li>获取当前字符串的长度</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>最长回文子串 （中等）（延伸问题的思路）</p>
+</li>
+<li><p>最长公共前缀（简单）</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>当字符串数组长度为 0 时则公共前缀为空，直接返回</li>
+<li>获取第一个字符串(或者获取最短的一个字符串)</li>
+<li>遍历后面的字符串，依次将其与 ans 进行比较，两两找出公共前缀，最终结果即为最长公共前缀</li>
+<li>如果查找过程中出现了 ans 为空的情况，则公共前缀不存在直接返回</li>
+<li>时间复杂度：O(s)O(s)，s 为所有字符串的长度之和</li>
+</ol>
+</blockquote>
+<ul>
+<li>移除元素 (拷贝覆盖，交换移除)</li>
+</ul>
+<blockquote>
+<ol>
+<li>主要思路是遍历数组nums，每次取出的数字变量为num，同时设置一个下标ans</li>
+<li>在遍历过程中如果出现数字与需要移除的值不相同时，则进行拷贝覆盖nums[ans] = num，ans自增1</li>
+<li>如果相同的时候，则跳过该数字不进行拷贝覆盖，最后ans即为新的数组长度</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol>
+<li>主要思路是遍历数组nums，遍历指针为i，总长度为ans</li>
+<li>在遍历过程中如果出现数字与需要移除的值不相同时，则i自增1，继续下一次遍历</li>
+<li>如果相同的时候，则将nums[i]与nums[ans-1]交换，即当前数字和数组最后一个数字进行交换，交换后就少了一个元素，故而ans自减1</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>字符串相乘</p>
+</li>
+<li><p>diff算法原理 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtong111/p/11198393.html">链接</a></p>
+</li>
+<li><p>最大子序和  (Math.max-返回最大值)</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>动态规划的是x首先对数组进行遍历，当前最大连续子序列和为 sum，结果为 ans</li>
+<li>如果 sum &gt; 0，则说明 sum 对结果有增益效果，则 sum 保留并加上当前遍历数字</li>
+<li>如果 sum &lt;= 0，则说明 sum 对结果无增益效果，需要舍弃，则 sum 直接更新为当前遍历数字</li>
+<li>每次比较 sum 和 ans的大小，将最大值置为ans，遍历结束返回结果</li>
+</ol>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/TS/" class="archive-article-date">
-  <time datetime="2020-11-29T05:47:17.000Z" itemprop="datePublished">Nov 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/TS/">TS</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  <time datetime="2020-11-29T05:44:25.000Z" itemprop="datePublished">Nov 29</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/01/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" data-id="ckqhrefta000e2xyc31wx3val" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/WEBPACK/" class="archive-article-date">
-  <time datetime="2020-11-29T05:42:27.000Z" itemprop="datePublished">Nov 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/WEBPACK/">WEBPACK</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/ES6/" class="archive-article-date">
-  <time datetime="2020-11-29T05:09:28.000Z" itemprop="datePublished">Nov 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/ES6/">ES6</a>
-    </h1>
+
+
   
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
-  <time datetime="2020-11-29T05:09:28.000Z" itemprop="datePublished">Nov 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/">Vue面试题</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
+  <nav id="page-nav">
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
-  <time datetime="2020-11-29T05:09:28.000Z" itemprop="datePublished">Nov 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/">JS面试题</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
         
