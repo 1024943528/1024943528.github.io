@@ -15,8 +15,9 @@
 <meta property="og:description" content="ts 提供的数据类型   boolean   number   string   array   tuple(元祖类型)(元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同)   enum（枚举类型）   any（任意类型）(在编程阶段还不清楚类型的变量指定一个类型。)   null,undefined (默认情况下 null 和 undefined 是所有类型的子类型)   vo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T05:47:17.000Z">
-<meta property="article:modified_time" content="2021-06-29T07:49:03.928Z">
+<meta property="article:modified_time" content="2021-07-06T08:44:15.951Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="https:&#x2F;&#x2F;www.tslang.cn&#x2F;docs&#x2F;handbook&#x2F;type-inference.html">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -154,19 +155,61 @@
 
 <h2 id="类类型"><a href="#类类型" class="headerlink" title="类类型"></a>类类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">theName: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = theName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rhino</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;Rhino&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">theName: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = theName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal(<span class="string">&quot;Goat&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> rhino = <span class="keyword">new</span> Rhino();</span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line">animal = rhino;</span><br><span class="line">animal = employee; <span class="comment">// 错误: Animal 与 Employee 不兼容.</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="范型"><a href="#范型" class="headerlink" title="范型"></a>范型</h2><ul>
+<li>  使用 any 类型会导致这个函数可以接收任何类型的 arg 参数，这样就丢失了一些信息：传入的类型与返回的类型应该是相同的。如果我们传入一个数字，我们只知道任何类型的值都有可能被返回。 因此，我们需要一种方法使返回值的类型与传入参数的类型是相同的。 这里，我们使用了 类型变量，它是一种特殊的变量，只用于表示类型而不是值。</li>
+<li>  T (泛型变量)适用于多个类型</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T[]</span>): <span class="title">T</span>[] </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length); <span class="comment">// Array has a .length, so no more error</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: <span class="built_in">Array</span>&lt;T&gt;</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length); <span class="comment">// Array has a .length, so no more error</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Lengthwise &#123;</span><br><span class="line">    length: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Lengthwise</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length); <span class="comment">// Now we know it has a .length property, so no more error</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入符合约束类型的值，必须包含必须的属性</span></span><br><span class="line">loggingIdentity(&#123; <span class="attr">length</span>: <span class="number">10</span>, <span class="attr">value</span>: <span class="number">3</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="范型约束"><a href="#范型约束" class="headerlink" title="范型约束"></a>范型约束</h2><p>-</p>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><ul>
+<li>  使用枚举我们可以定义一些带名字的常量。</li>
+<li>  使用枚举可以清晰地表达意图或创建一组有区别的用例。 TypeScript 支持数字的和基于字符串的枚举。</li>
+<li>  数字枚举，字符串枚举，异构枚举（Heterogeneous enums）（混合使用数字和字符串-不建议使用）</li>
+<li>  一个枚举表达式字面量（主要是字符串字面量或数字字面量）</li>
+<li>  一个对之前定义的常量枚举成员的引用（可以是在不同的枚举类型中定义的）</li>
+<li>  带括号的常量枚举表达式</li>
+<li>  一元运算符 +, -, ~其中之一应用在了常量枚举表达式</li>
+<li>  常量枚举表达式做为二元运算符 +, -, *, /, %, &lt;&lt;, &gt;&gt;, &gt;&gt;&gt;, &amp;, |, ^的操作对象。 若常数枚举- 表达式求值后为 NaN 或 Infinity，则会在编译阶段报错。</li>
+</ul>
+<h3 id="联合枚举与枚举成员的类型"><a href="#联合枚举与枚举成员的类型" class="headerlink" title="联合枚举与枚举成员的类型"></a>联合枚举与枚举成员的类型</h3><ul>
+<li><p>存在一种特殊的非计算的常量枚举成员的子集：字面量枚举成员。 字面量枚举成员是指不带有初始值的常量枚举成员，或者是值被初始化为</p>
+<ul>
+<li>  任何字符串字面量（例如： “foo”， “bar”， “baz”）</li>
+<li>  任何数字字面量（例如： 1, 100）</li>
+<li>  应用了一元 -符号的数字字面量（例如： -1, -100）</li>
+</ul>
+</li>
+<li><p>  数字枚举存在反向映射（ value -&gt; name）</p>
+</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> ShapeKind &#123;</span><br><span class="line">    Circle,</span><br><span class="line">    Square,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Circle &#123;</span><br><span class="line">    kind: ShapeKind.Circle;</span><br><span class="line">    radius: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Square &#123;</span><br><span class="line">    kind: ShapeKind.Square;</span><br><span class="line">    sideLength: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c: Circle = &#123;</span><br><span class="line">    kind: ShapeKind.Square,</span><br><span class="line">    <span class="comment">//    ~~~~~~~~~~~~~~~~ Error!</span></span><br><span class="line">    radius: <span class="number">100</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Enum &#123;</span><br><span class="line">    A,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = Enum.A;</span><br><span class="line"><span class="keyword">let</span> nameOfA = Enum[a]; <span class="comment">// &quot;A&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="const-枚举"><a href="#const-枚举" class="headerlink" title="const 枚举"></a>const 枚举</h3><ul>
+<li>  为了避免在额外生成的代码上的开销和额外的非直接的对枚举成员的访问，我们可以使用 const 枚举。 常量枚举通过在枚举上使用 const 修饰符来定义。</li>
+</ul>
+<h3 id="外部枚举-用来描述已经存在的枚举类型的形状"><a href="#外部枚举-用来描述已经存在的枚举类型的形状" class="headerlink" title="外部枚举(用来描述已经存在的枚举类型的形状)"></a>外部枚举(用来描述已经存在的枚举类型的形状)</h3><ul>
+<li>  外部枚举和非外部枚举之间有一个重要的区别，在正常的枚举里，没有初始化方法的成员被当成常数成员。 对于非常数的外部枚举而言，没有初始化方法时被当做需要经过计算的</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="built_in">enum</span> Enum &#123;</span><br><span class="line">    A = <span class="number">1</span>,</span><br><span class="line">    B,</span><br><span class="line">    C = <span class="number">2</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/TS/" data-id="ckqhrjsgb0008aeyc43tg4zjl" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/TS/" data-id="ckr1v9o9o0006iqyc89z483qw" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" rel="tag">https://www.tslang.cn/docs/handbook/type-inference.html</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2020/11/29/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -194,15 +237,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" rel="tag">https://www.tslang.cn/docs/handbook/type-inference.html</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" style="font-size: 10px;">https://www.tslang.cn/docs/handbook/type-inference.html</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 

@@ -7,15 +7,15 @@
   
   <title>JS面试题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js基础 js声明的三种方式 var,let,const 区别特点 对象类型(引用类型)，有那3种类型 自定义对象4种方式如何创建 创建自定义对象的几种方式 数据类型的判断 为什么typeof null为object instanceof Object.prototype.toString.call() 什么是包装对象 js运算符  内存 执行上下文的概念 执行环境有那三种 执行上下文5个特点 执">
+  <meta name="description" content="js 基础 js 声明的三种方式 function first（）{} 函数声明 var second &#x3D; function（）{} 函数表达式 var third &#x3D; new Function（）Function构造函数     假如 function foo(){} 是一个赋值语句或表达式的一部分，则认为它是一个函数表达式。而如果 function foo(){} 被包含在一个函数体内，或者位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS面试题">
 <meta property="og:url" content="http://example.com/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="js基础 js声明的三种方式 var,let,const 区别特点 对象类型(引用类型)，有那3种类型 自定义对象4种方式如何创建 创建自定义对象的几种方式 数据类型的判断 为什么typeof null为object instanceof Object.prototype.toString.call() 什么是包装对象 js运算符  内存 执行上下文的概念 执行环境有那三种 执行上下文5个特点 执">
+<meta property="og:description" content="js 基础 js 声明的三种方式 function first（）{} 函数声明 var second &#x3D; function（）{} 函数表达式 var third &#x3D; new Function（）Function构造函数     假如 function foo(){} 是一个赋值语句或表达式的一部分，则认为它是一个函数表达式。而如果 function foo(){} 被包含在一个函数体内，或者位">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T05:09:28.000Z">
-<meta property="article:modified_time" content="2021-03-01T13:36:55.309Z">
+<meta property="article:modified_time" content="2021-07-08T06:04:24.483Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -88,148 +88,205 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="js基础"><a href="#js基础" class="headerlink" title="js基础"></a>js基础</h3><ul>
-<li>js声明的三种方式</li>
-<li>var,let,const 区别特点</li>
-<li>对象类型(引用类型)，有那3种类型</li>
-<li>自定义对象4种方式如何创建</li>
-<li>创建自定义对象的几种方式</li>
-<li>数据类型的判断</li>
-<li>为什么typeof null为object</li>
-<li>instanceof</li>
-<li>Object.prototype.toString.call()</li>
-<li>什么是包装对象</li>
-<li>js运算符</li>
+        <h3 id="js-基础"><a href="#js-基础" class="headerlink" title="js 基础"></a>js 基础</h3><ul>
+<li>js 声明的三种方式<ul>
+<li>function first（）{} 函数声明</li>
+<li>var second = function（）{} 函数表达式</li>
+<li>var third = new Function（）Function构造函数</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>假如 function foo(){} 是一个赋值语句或表达式的一部分，则认为它是一个函数表达式。而如果 function foo(){} 被包含在一个函数体内，或者位于程序（的最上层）中，则将它作为一个函数声明来解析。</p>
+</blockquote>
+<blockquote>
+<p>函数表达式可以直接在后面加括号执行，而函数声明不可以。也就是说，函数表达式可以通过直接加()来执行这个函数</p>
+</blockquote>
+<blockquote>
+<p>函数声明提前</p>
+</blockquote>
+<blockquote>
+<p>作用域的区别 </p>
+</blockquote>
+<ul>
+<li><h2 id="var-let-const-区别特点"><a href="#var-let-const-区别特点" class="headerlink" title="var,let,const 区别特点   "></a>var,let,const 区别特点   </h2></li>
+<li>  对象类型(引用类型)，有那 3 种类型</li>
+<li>  自定义对象 4 种方式如何创建</li>
+<li>  创建自定义对象的几种方式</li>
+<li>  数据类型的判断</li>
+<li>  为什么 typeof null 为 object</li>
+<li>  instanceof</li>
+<li>  Object.prototype.toString.call()</li>
+<li>  什么是包装对象</li>
+<li>  js 运算符</li>
 </ul>
 <h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><ul>
-<li>执行上下文的概念</li>
-<li>执行环境有那三种</li>
-<li>执行上下文5个特点</li>
-<li>执行的三个阶段</li>
-<li>堆栈的概念</li>
-<li>什么是垃圾</li>
-<li>垃圾回收机制有那三种</li>
-<li>什么是内存泄漏</li>
-<li>内存泄漏发生的五种场景</li>
-<li>怎么监控内存泄漏</li>
+<li>  执行上下文的概念</li>
+<li>  执行环境有那三种</li>
+<li>  执行上下文 5 个特点</li>
+<li>  执行的三个阶段</li>
+<li>  堆栈的概念</li>
+<li>  什么是垃圾</li>
+<li>  垃圾回收机制有那三种</li>
+<li>  什么是内存泄漏</li>
+<li>  内存泄漏发生的五种场景</li>
+<li>  怎么监控内存泄漏</li>
 </ul>
 <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li>概念</li>
+<li>  概念</li>
 </ul>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
-<li>概念</li>
-<li>应用场景</li>
+<li>  概念</li>
+<li>  应用场景</li>
 </ul>
-<h3 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h3><ul>
-<li>es5和es6中箭头函数的区别</li>
-<li>怎么改变this的指向</li>
-<li>箭头函数6个特点</li>
-<li>apply和call的区别</li>
-<li>bind和 apply，call的区别</li>
-<li>函数调用的方法有哪四种</li>
-<li>new的四步过程</li>
+<h3 id="this-指向问题"><a href="#this-指向问题" class="headerlink" title="this 指向问题"></a>this 指向问题</h3><ul>
+<li>  es5 和 es6 中箭头函数的区别</li>
+<li>  怎么改变 this 的指向</li>
+<li>  箭头函数 6 个特点</li>
+<li>  apply 和 call 的区别</li>
+<li>  bind 和 apply，call 的区别</li>
+<li>  函数调用的方法有哪四种</li>
+<li>  new 的四步过程</li>
 </ul>
 <h3 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h3><ul>
-<li>基本概念</li>
-<li>在实例化的时候，prototype上的属性会作为原型对象赋值给实例</li>
+<li>  基本概念</li>
+<li>  在实例化的时候，prototype 上的属性会作为原型对象赋值给实例</li>
 </ul>
 <h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><ul>
-<li>手写深拷贝原理</li>
-<li>堆和栈的区别</li>
-<li>什么是深拷贝和浅拷贝</li>
+<li>  手写深拷贝原理</li>
+<li>  堆和栈的区别</li>
+<li>  什么是深拷贝和浅拷贝</li>
 </ul>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><ul>
-<li>数组去重有那三种办法</li>
+<li>  数组去重有那三种办法</li>
 </ul>
 <h3 id="数组展开"><a href="#数组展开" class="headerlink" title="数组展开"></a>数组展开</h3><ul>
-<li>数组展开有哪三种办法</li>
+<li>  数组展开有哪三种办法</li>
 </ul>
 <h3 id="数组合并"><a href="#数组合并" class="headerlink" title="数组合并"></a>数组合并</h3><ul>
-<li>数组合并有哪两种办法</li>
+<li>  数组合并有哪两种办法</li>
 </ul>
 <h3 id="判断数组"><a href="#判断数组" class="headerlink" title="判断数组"></a>判断数组</h3><ul>
-<li>判断是否为数组的5种方法</li>
+<li>  判断是否为数组的 5 种方法</li>
 </ul>
-<h3 id="v8引擎"><a href="#v8引擎" class="headerlink" title="v8引擎"></a>v8引擎</h3><ul>
-<li>垃圾回收特点</li>
+<h3 id="v8-引擎"><a href="#v8-引擎" class="headerlink" title="v8 引擎"></a>v8 引擎</h3><ul>
+<li>  垃圾回收特点</li>
 </ul>
 <h3 id="什么是事件循环"><a href="#什么是事件循环" class="headerlink" title="什么是事件循环"></a>什么是事件循环</h3><ul>
-<li><p>每办理完一个业务，柜员就会问当前的客户，是否还有其他需要办理的业务。（检查还有没有微任务需要处理）<br>而客户明确告知说没有事情以后，柜员就去查看后边还有没有等着办理业务的人。（结束本次宏任务、检查还有没有宏任务需要处理）<br>这个检查的过程是持续进行的，每完成一个任务都会进行一次，而这样的操作就被称为Event Loop。(这是个非常简易的描述了，实际上会复杂很多)</p>
+<li>每办理完一个业务，柜员就会问当前的客户，是否还有其他需要办理的业务。（检查还有没有微任务需要处理）<br>  而客户明确告知说没有事情以后，柜员就去查看后边还有没有等着办理业务的人。（结束本次宏任务、检查还有没有宏任务需要处理）<br>  这个检查的过程是持续进行的，每完成一个任务都会进行一次，而这样的操作就被称为 Event Loop。(这是个非常简易的描述了，实际上会复杂很多)</li>
+<li>  在当前的微任务没有执行完成时，是不会执行下一个宏任务的。</li>
+<li>  首先要明确的一点是，宏任务必然是在微任务之后才执行的（因为微任务实际上是宏任务的其中一个步骤）</li>
+<li>  在同步代码执行完成后才回去检查是否有异步任务完成，并执行对应的回调，而微任务又会在宏任务之前执行。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="params">_</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="number">4</span>))</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line"> resolve()</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>) <span class="comment">//1234</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><ul>
+<li>  背景</li>
+<li>  优点及缺点</li>
+</ul>
+<h3 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h3><ul>
+<li>  函数式编程关心数据的映射，命令式编程关心解决问题的步骤</li>
+<li>  函数式编程关心类型（代数结构）之间的关系，命令式编程关心解决问题的步骤</li>
+</ul>
+<h3 id="es6-增加了哪些东西"><a href="#es6-增加了哪些东西" class="headerlink" title="es6 增加了哪些东西"></a>es6 增加了哪些东西</h3><ul>
+<li>  类</li>
+<li>  模块化</li>
+<li>  箭头（Arrow）函数</li>
+<li>  函数参数默认值</li>
+<li>  模版字符串</li>
+<li>  解构赋值</li>
+<li>  延展操作符</li>
+<li>  对象属性简写</li>
+<li>  Promise</li>
+<li>  Let 与 Const</li>
+<li>  什么是 mvvm</li>
+<li>  什么是 SPA 单页面，它的优缺点分别是什么</li>
+</ul>
+<h3 id="vue-生命周期"><a href="#vue-生命周期" class="headerlink" title="vue 生命周期"></a>vue 生命周期</h3><ul>
+<li><p>基本概念</p>
 </li>
-<li><p>在当前的微任务没有执行完成时，是不会执行下一个宏任务的。</p>
+<li><p>v-show 和 v-if 的区别</p>
 </li>
-<li><p>首先要明确的一点是，宏任务必然是在微任务之后才执行的（因为微任务实际上是宏任务的其中一个步骤）</p>
+<li><p>Vue 的单向数据流</p>
 </li>
-<li><p>在同步代码执行完成后才回去检查是否有异步任务完成，并执行对应的回调，而微任务又会在宏任务之前执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">setTimeout</span>(<span class="function"><span class="params">_</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="number">4</span>))</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  resolve()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>) <span class="comment">//1234</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li><p>异步请求适合在哪个生命周期调用？</p>
+</li>
+<li><p>Vue2.x 组件通信有哪些方式？</p>
+<ul>
+<li>  父子组件通信</li>
+<li>  兄弟组件通信</li>
+<li>  跨级组件通信</li>
+</ul>
+</li>
+<li><p>什么是 SSR</p>
+</li>
+<li><p>Vue 路由</p>
+</li>
+<li><p>你有对 Vue 项目进行哪些优化？</p>
+</li>
+<li><p>Vue 中的 key 有什么作用？</p>
+</li>
+<li><p>虚拟 DOM 实现原理</p>
+</li>
+<li><p>虚拟 DOM 的优缺点</p>
+</li>
+<li><p>Proxy 与 Object.defineProperty 优劣对比</p>
+</li>
+<li><p>Vue 框架怎么实现对象和数组的监听？</p>
+</li>
+<li><p>Vue 是如何实现数据双向绑定的</p>
+</li>
+<li><p>v-model 的原理</p>
+</li>
+<li><p>组件中 data 为什么是一个函数？</p>
+</li>
+<li><p>谈谈你对 keep-alive</p>
+</li>
+<li><p>父组件可以监听到子组件的生命周期吗？</p>
+</li>
+<li><p>直接给一个数组项赋值，Vue 能检测到变化吗？</p>
+</li>
+<li><p>vue2.x 中如何监测数组变化</p>
+</li>
+<li><p>Vue2.x 和 Vue3.x 渲染器的 diff 算法分别说一下</p>
+</li>
+<li><p>Vue 模版编译原理</p>
+</li>
+<li><p>Computed 和 Watch</p>
+</li>
+<li><p>nextTick</p>
+</li>
+<li><p>vue 响应式原理</p>
+</li>
+<li><p>在使用计算属性的时，函数名和 data 数据源中的数据可以同名吗？</p>
+</li>
+<li><p>怎么解决 vue 打包后静态资源图片失效的问题</p>
+</li>
+<li><p>怎么解决 vue 动态设置 img 的 src 不生效的问题？</p>
+<ul>
+<li><p>动态添加src被当作静态资源处理了，没有进行编译。使用require来获取路径</p>
+</li>
+<li><p>可以在 vue.config.js 配置路径映射</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">	resolve: &#123;</span><br><span class="line">		alias: &#123;</span><br><span class="line">      <span class="comment">//path.resolve（）方法将路径或路径片段的序列解析为绝对路径</span></span><br><span class="line">      <span class="comment">//给定的路径序列从右到左处理，每个后续的 path 会被追加到前面，直到构建绝对路径。</span></span><br><span class="line">      <span class="comment">//如果在处理完所有给定的 path 片段之后，还没有生成绝对路径，则使用当前工作目录</span></span><br><span class="line">			<span class="comment">//注意：生成的路径被规范化，并删除尾部斜杠，零长度的 path 片段被忽略 ，没有传入 path 片段，则 path.resolve() 将返回当前工作目录的绝对路径     </span></span><br><span class="line">			utilties: path.resolve(__dirname,<span class="string">&#x27;src/utilties/&#x27;</span>) <span class="comment">//__dirname 获取绝对路径</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Utilties form &#39;..&#x2F;..&#x2F;utiliies&#x2F;utiliy&#39;</span><br><span class="line">import Utilties form &#39;Utiliies&#x2F;utiliy&#39;</span><br></pre></td></tr></table></figure>
+
+
 
 </li>
 </ul>
-<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><ul>
-<li>背景</li>
-<li>优点及缺点</li>
-</ul>
-<h3 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h3><ul>
-<li>函数式编程关心数据的映射，命令式编程关心解决问题的步骤</li>
-<li>函数式编程关心类型（代数结构）之间的关系，命令式编程关心解决问题的步骤</li>
-</ul>
-<h3 id="es6增加了哪些东西"><a href="#es6增加了哪些东西" class="headerlink" title="es6增加了哪些东西"></a>es6增加了哪些东西</h3><ul>
-<li>类</li>
-<li>模块化</li>
-<li>箭头（Arrow）函数</li>
-<li>函数参数默认值</li>
-<li>模版字符串</li>
-<li>解构赋值</li>
-<li>延展操作符</li>
-<li>对象属性简写</li>
-<li>Promise</li>
-<li>Let与Const</li>
-<li>什么是mvvm</li>
-<li>什么是 SPA 单页面，它的优缺点分别是什么</li>
-</ul>
-<h3 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h3><ul>
-<li>基本概念</li>
-<li>v-show 和 v-if 的区别</li>
-<li>Vue 的单向数据流</li>
-<li>异步请求适合在哪个生命周期调用？</li>
-<li>Vue2.x组件通信有哪些方式？<ul>
-<li>父子组件通信</li>
-<li>兄弟组件通信</li>
-<li>跨级组件通信</li>
-</ul>
 </li>
-<li>什么是SSR</li>
-<li>Vue路由</li>
-<li>你有对 Vue 项目进行哪些优化？</li>
-<li>Vue 中的 key 有什么作用？</li>
-<li>虚拟 DOM 实现原理</li>
-<li>虚拟 DOM 的优缺点</li>
-<li>Proxy 与 Object.defineProperty 优劣对比</li>
-<li>Vue 框架怎么实现对象和数组的监听？</li>
-<li>Vue 是如何实现数据双向绑定的</li>
-<li>v-model 的原理</li>
-<li>组件中 data 为什么是一个函数？</li>
-<li>谈谈你对 keep-alive</li>
-<li>父组件可以监听到子组件的生命周期吗？</li>
-<li>直接给一个数组项赋值，Vue 能检测到变化吗？</li>
-<li>vue2.x中如何监测数组变化</li>
-<li>Vue2.x和Vue3.x渲染器的diff算法分别说一下</li>
-<li>Vue模版编译原理</li>
-<li>Computed和Watch</li>
-<li>nextTick</li>
-<li>vue响应式原理</li>
-<li>在使用计算属性的时，函数名和data数据源中的数据可以同名吗？</li>
-<li>怎么解决vue打包后静态资源图片失效的问题</li>
-<li>怎么解决vue动态设置img的src不生效的问题？</li>
-<li>使用vue渲染大量数据时应该怎么优化？说下你的思路！</li>
+</ul>
+<ul>
+<li>  使用 vue 渲染大量数据时应该怎么优化？说下你的思路！</li>
 </ul>
 <h3 id="前端性能优化方案目录"><a href="#前端性能优化方案目录" class="headerlink" title="前端性能优化方案目录"></a>前端性能优化方案目录</h3><ul>
 <li><ol>
-<li>初始化页面加loding图</li>
+<li>初始化页面加 loding 图</li>
 </ol>
 </li>
 <li><ol start="2">
-<li>减少http请求和冗余数据</li>
+<li>减少 http 请求和冗余数据</li>
 </ol>
 </li>
 <li><ol start="3">
@@ -237,15 +294,15 @@
 </ol>
 </li>
 <li><ol start="4">
-<li>配置nginx优化</li>
+<li>配置 nginx 优化</li>
 </ol>
 </li>
 <li><ol start="5">
-<li>优化wepack打包机制</li>
+<li>优化 wepack 打包机制</li>
 </ol>
 </li>
 <li><ol start="6">
-<li>使用CDN</li>
+<li>使用 CDN</li>
 </ol>
 </li>
 <li><ol start="7">
@@ -257,7 +314,7 @@
 </ol>
 </li>
 <li><ol start="9">
-<li>图片转base64</li>
+<li>图片转 base64</li>
 </ol>
 </li>
 <li><ol start="10">
@@ -266,313 +323,345 @@
 </li>
 </ul>
 <h3 id="浏览器知识"><a href="#浏览器知识" class="headerlink" title="浏览器知识"></a>浏览器知识</h3><ul>
-<li>从URL输入到页面展现发生了什么</li>
+<li>  从 URL 输入到页面展现发生了什么</li>
 </ul>
-<h3 id="vue-router相关问题"><a href="#vue-router相关问题" class="headerlink" title="vue-router相关问题"></a>vue-router相关问题</h3><ul>
-<li><p>路由守卫生命周期</p>
+<h3 id="vue-router-相关问题"><a href="#vue-router-相关问题" class="headerlink" title="vue-router 相关问题"></a>vue-router 相关问题</h3><ul>
+<li><p>  路由守卫生命周期</p>
 </li>
-<li><p>说一下重定向和别名</p>
+<li><p>  说一下重定向和别名</p>
 </li>
-<li><p>路由的切换是怎么做到的</p>
+<li><p>  路由的切换是怎么做到的</p>
 </li>
-<li><p>实现深拷贝的办法 以及实现思路</p>
+<li><p>  实现深拷贝的办法 以及实现思路</p>
 </li>
-<li><p>vue生命周期可以用来干嘛</p>
+<li><p>  vue 生命周期可以用来干嘛</p>
 </li>
-<li><p>项目中的难点</p>
+<li><p>  项目中的难点</p>
 </li>
-<li><p>vue和angular的使用区别</p>
+<li><p>  vue 和 angular 的使用区别</p>
 </li>
-<li><p>vue的使用优点</p>
+<li><p>  vue 的使用优点</p>
 </li>
-<li><p>长方形变圆形图片</p>
+<li><p>  长方形变圆形图片</p>
 </li>
-<li><p>路由懒加载</p>
+<li><p>  路由懒加载</p>
 </li>
-<li><p>vue全家桶</p>
+<li><p>vue 全家桶</p>
 <ul>
-<li>vue-cli,vuex,vue-router,element-ui,Axios</li>
+<li>  vue-cli,vuex,vue-router,element-ui,Axios</li>
 </ul>
 </li>
 <li><p>let const 的区别</p>
 <ul>
-<li>let 声明的是变量,const声明的是常量，如果是对象可以修改，但不能重新赋值</li>
-<li>cosnt声明必须赋值且不能赋值为null</li>
+<li>  let 声明的是变量,const 声明的是常量，如果是对象可以修改，但不能重新赋值</li>
+<li>  cosnt 声明必须赋值且不能赋值为 null</li>
 </ul>
 </li>
-<li><p>手写闭包</p>
+<li><p>  手写闭包</p>
 </li>
-<li><p>this问题</p>
+<li><p>  this 问题</p>
 </li>
-<li><p>手写深拷贝代码</p>
+<li><p>  手写深拷贝代码</p>
 </li>
-<li><p>计算属性</p>
+<li><p>  计算属性</p>
 </li>
-<li><p>ajax使用步骤(异步的js和xml)</p>
+<li><p>ajax 使用步骤(异步的 js 和 xml)</p>
 <ul>
-<li>创建xmlhttprequest对象</li>
-<li>规定请求的类型</li>
+<li>  创建 xmlhttprequest 对象</li>
+<li>  规定请求的类型</li>
 </ul>
 </li>
-<li><p>ajax解决的什么(异步的刷新页面)</p>
+<li><p>ajax 解决的什么(异步的刷新页面)</p>
 <ul>
-<li>回调地狱</li>
-<li>缺点 它可能破坏浏览器的后退与加入收藏书签功能</li>
+<li>  回调地狱</li>
+<li>  缺点 它可能破坏浏览器的后退与加入收藏书签功能</li>
 </ul>
 </li>
-<li><p>axios原理</p>
+<li><p>  axios 原理</p>
 </li>
-<li><p>promise原理</p>
+<li><p>  promise 原理</p>
 </li>
-<li><p>sass和less区别，以及怎么使用</p>
+<li><p>  sass 和 less 区别，以及怎么使用</p>
 </li>
-<li><p>怎么触发组件的原生事件</p>
+<li><p>  怎么触发组件的原生事件</p>
 </li>
-<li><p>vue-router</p>
+<li><p>  vue-router</p>
 </li>
-<li><p>route和router的区别</p>
+<li><p>  route 和 router 的区别</p>
 </li>
-<li><p>localstorage,seccionstorage,cookie</p>
+<li><p>  localstorage,seccionstorage,cookie</p>
 </li>
-<li><p>ajax实现步骤</p>
+<li><p>  ajax 实现步骤</p>
 </li>
-<li><p>ajax基于什么原理</p>
+<li><p>  ajax 基于什么原理</p>
 </li>
-<li><p>vue3.0增加了什么</p>
+<li><p>  vue3.0 增加了什么</p>
 </li>
 <li><p>promise 是什么</p>
 <ul>
-<li>是一个容器保存了一个未来的状态</li>
-<li>拥有三种状态 pending,fullfiled,rejected</li>
+<li>  是一个容器保存了一个未来的状态</li>
+<li>  拥有三种状态 pending,fullfiled,rejected</li>
 </ul>
 </li>
 <li><p>什么是同步异步</p>
 <ul>
-<li>于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有等主线程任务执行完毕，”任务队列”开始通知主线程，请求执行任务，该任务才会进入主线程执行。</li>
-<li>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。</li>
-<li>（2）主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</li>
-<li>（3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
-<li>（4）主线程不断重复上面的第三步。</li>
+<li>  于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有等主线程任务执行完毕，”任务队列”开始通知主线程，请求执行任务，该任务才会进入主线程执行。</li>
+<li>  （1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。</li>
+<li>  （2）主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</li>
+<li>  （3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+<li>  （4）主线程不断重复上面的第三步。</li>
 </ul>
 </li>
-<li><p>js异步机制</p>
+<li><p>js 异步机制</p>
 <ul>
-<li>遇到宏任务先执行宏任务，将宏任务放入事件队列中（event queue）,然后执行微任务放入事件队列中，但是队列不是一个队列，</li>
+<li>  遇到宏任务先执行宏任务，将宏任务放入事件队列中（event queue）,然后执行微任务放入事件队列中，但是队列不是一个队列，</li>
 </ul>
 </li>
-<li><p>宏任务 macrotasks: setTimeout, setInterval, setImmediate, I/O, UI rendering</p>
+<li><p>  宏任务 macrotasks: setTimeout, setInterval, setImmediate, I/O, UI rendering</p>
 </li>
-<li><p>微任务 microtasks: process.nextTick, Promises, Object.observe(废弃), MutationObserver</p>
+<li><p>  微任务 microtasks: process.nextTick, Promises, Object.observe(废弃), MutationObserver</p>
 </li>
-<li><p>vue自定义指令原理</p>
+<li><p>  vue 自定义指令原理</p>
 </li>
-<li><p>合并对象的方法</p>
+<li><p>  合并对象的方法</p>
 </li>
-<li><p>数组在vue里里面是怎么双向绑定的</p>
+<li><p>  数组在 vue 里里面是怎么双向绑定的</p>
 </li>
-<li><p>flex常见属性</p>
+<li><p>  flex 常见属性</p>
 </li>
-<li><p>ts增加了什么</p>
+<li><p>ts 增加了什么</p>
 <ul>
-<li>类</li>
-<li>接口</li>
-<li>模块</li>
-<li>类型注解</li>
-<li>编译时类型检查</li>
-<li>arrow函数</li>
+<li>  类</li>
+<li>  接口</li>
+<li>  模块</li>
+<li>  类型注解</li>
+<li>  编译时类型检查</li>
+<li>  arrow 函数</li>
 </ul>
 </li>
 </ul>
 <p>##常见面试题（必会）</p>
 <ul>
-<li>垂直居中有几种办法(flex,posation,margin,transform:translateY:50%，table-cell)</li>
-<li>flex这个属性</li>
-<li>bfc是什么有几种实现方式</li>
-<li>如何改变this的指向</li>
-<li>rem,为什么 （基于html字体大小）</li>
-<li>http 3次握手四次挥手</li>
-<li>https 的 s代表什么</li>
-<li>axios 怎么实现</li>
-<li>fetch请求怎么实现</li>
-<li>this是如何绑定的</li>
-<li>如何实现一个bind方法</li>
-<li>promise值要有返回值都是成功的</li>
-<li>promise.then 抛出一个错误该怎么做</li>
-<li>keep-alive的作用</li>
-<li>new是怎么实现的</li>
-<li>清除浮动的方法</li>
-<li>vue的data为什么是return函数的形式</li>
-<li>vue中使用定时器再那个生命周期区清除-befoerDestory</li>
-<li>vue的双向绑定原理</li>
-<li>各个什么周期的功能（destory用来干嘛）</li>
-<li>vuex是怎么发送请求的</li>
-<li>vue生命周期 cereated 和 mounted 的区别</li>
-<li>组件之间如何传值 props emit ref, provide,inject,事件巴士，</li>
-<li>css选择器的优先级</li>
-<li>前端跨域的方法</li>
-<li>window.open</li>
-<li>如何判断一个数组 （instanceof,isarray）</li>
-<li>typeof和instanceof的区别</li>
-<li>深浅拷贝的不同怎么实现</li>
-<li>遍历对象中的所有key值</li>
-<li>线程和进程的区别</li>
-<li>手动实现给一个对象绑定方法，触发一个方法，移除一个方法（类似vue的事件巴士）</li>
+<li>  垂直居中有几种办法(flex,posation,margin,transform:translateY:50%，table-cell)</li>
+<li>  flex 这个属性</li>
+<li>  bfc 是什么有几种实现方式</li>
+<li>  如何改变 this 的指向</li>
+<li>  rem,为什么 （基于 html 字体大小）</li>
+<li>  http 3 次握手四次挥手</li>
+<li>  https 的 s 代表什么</li>
+<li>  axios 怎么实现</li>
+<li>  fetch 请求怎么实现</li>
+<li>  this 是如何绑定的</li>
+<li>  如何实现一个 bind 方法</li>
+<li>  promise 值要有返回值都是成功的</li>
+<li>  promise.then 抛出一个错误该怎么做</li>
+<li>  keep-alive 的作用</li>
+<li>new 是怎么实现的<ul>
+<li> 创建一个空对象，将它的引用赋给 this，继承函数的原型。</li>
+<li> 通过 this 将属性和方法添加至这个对象</li>
+<li>最后返回 this 指向的新对象，也就是实例（如果没有手动返回其他的对象）</li>
+</ul>
+</li>
+<li>  清除浮动的方法</li>
+<li>  vue 的 data 为什么是 return 函数的形式</li>
+<li>vue 中使用定时器再那个生命周期区清除<ul>
+<li>befoerDestory</li>
+</ul>
+</li>
+<li>  vue 的双向绑定原理</li>
+<li>  各个什么周期的功能（destory 用来干嘛）</li>
+<li>  vuex 是怎么发送请求的</li>
+<li>  vue 生命周期 cereated 和 mounted 的区别</li>
+<li>  组件之间如何传值 props emit ref, provide,inject,事件巴士，</li>
+<li>  css 选择器的优先级</li>
+<li>  前端跨域的方法</li>
+<li>  window.open</li>
+<li>  如何判断一个数组 （instanceof,isarray）</li>
+<li>  typeof 和 instanceof 的区别</li>
+<li>  深浅拷贝的不同怎么实现</li>
+<li>  遍历对象中的所有 key 值</li>
+<li>  线程和进程的区别</li>
+<li>  手动实现给一个对象绑定方法，触发一个方法，移除一个方法（类似 vue 的事件巴士）</li>
 </ul>
 <blockquote>
 <ol>
-<li>typeof用于判断数据类型，返回值为6个字符串，分别为string、Boolean、number、function、object、undefined</li>
-<li>null、array、object以及函数实例（new + 函数）得到的都是object</li>
-<li>typeof不用指定数据类型，返回值为OBject</li>
-<li>instanceof 需要指定数据类型，与传进去的数据做类型对比 返回值为Boolean值</li>
-<li>instanceof 只能用来判断两个对象是否属于实例关系， 而不能判断一个对象实例具体属于哪种类型</li>
-<li>实现原理上的区别 原理是这样的，不同的对象在底层都表示为二进制， 在 JavaScript 中二进制前三位都为 0 的话会被判断为 object 类型， null 的二进制表示是全 0， 自然前三位也是 0， 所以执行 typeof 时会返回“object”</li>
+<li> typeof 用于判断数据类型，返回值为 6 个字符串，分别为 string、Boolean、number、function、object、undefined</li>
+<li> null、array、object 以及函数实例（new + 函数）得到的都是 object</li>
+<li> typeof 不用指定数据类型，返回值为 OBject</li>
+<li> instanceof 需要指定数据类型，与传进去的数据做类型对比 返回值为 Boolean 值</li>
+<li> instanceof 只能用来判断两个对象是否属于实例关系， 而不能判断一个对象实例具体属于哪种类型</li>
+<li> 实现原理上的区别 原理是这样的，不同的对象在底层都表示为二进制， 在 JavaScript 中二进制前三位都为 0 的话会被判断为 object 类型， null 的二进制表示是全 0， 自然前三位也是 0， 所以执行 typeof 时会返回“object”</li>
 </ol>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function new_instance_of(leftVaule, rightVaule) &#123;</span><br><span class="line">    let rightProto &#x3D; rightVaule.prototype; &#x2F;&#x2F; 取右表达式的 prototype 值</span><br><span class="line">    leftVaule &#x3D; leftVaule.__proto__; &#x2F;&#x2F; 取左表达式的__proto__值</span><br><span class="line">    while (true) &#123;</span><br><span class="line">    	if (leftVaule &#x3D;&#x3D;&#x3D; null) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (leftVaule &#x3D;&#x3D;&#x3D; rightProto) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        leftVaule &#x3D; leftVaule.__proto__</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>怎么实现instanceof (原型链)（返回布尔值）</p>
+<li><p>怎么实现 instanceof (原型链)（返回布尔值）</p>
 <blockquote>
 <ol>
-<li>判断方法是根据对象的原型链依次向下查询，如果obj2的原型属性存在obj1的原型链上，（obj1 instanceof obj2）值为true。</li>
+<li> 判断方法是根据对象的原型链依次向下查询，如果 obj2 的原型属性存在 obj1 的原型链上，（obj1 instanceof obj2）值为 true。</li>
 </ol>
 </blockquote>
 </li>
-<li><p>keep-alive 是怎么使用的（1.路由中 meta keepalive:true）(include-缓存,exclude不缓存优先级高)<a target="_blank" rel="noopener" href="https://blog.csdn.net/fu983531588/article/details/90321827">链接</a></p>
+<li><p>  keep-alive 是怎么使用的（1.路由中 meta keepalive:true）(include-缓存,exclude 不缓存优先级高)<a target="_blank" rel="noopener" href="https://blog.csdn.net/fu983531588/article/details/90321827">链接</a></p>
 </li>
 </ul>
 <blockquote>
-<p>在 created 函数调用时将需要缓存的 VNode 节点保存在 this.cache 中／在 render（页面渲染） 时，如果 VNode 的 name 符合缓存条件（可以用 include 以及 exclude 控制），则会从 this.cache 中取出之前缓存的 VNode 实例进行渲染。VNode：虚拟DOM，其实就是一个JS对</p>
+<p>在 created 函数调用时将需要缓存的 VNode 节点保存在 this.cache 中／在 render（页面渲染） 时，如果 VNode 的 name 符合缓存条件（可以用 include 以及 exclude 控制），则会从 this.cache 中取出之前缓存的 VNode 实例进行渲染。VNode：虚拟 DOM，其实就是一个 JS 对</p>
 </blockquote>
 <ul>
-<li>vue双向绑定原理</li>
-<li>什么是跨域，限制了什么，不同源的话会进行什么策略，jsonp,nigix代理，websocket,php端修改header</li>
-<li>this的指向问题（apply,call,bind）apply</li>
-<li>promise 和 async await 的区别</li>
-<li>es6的新特性（es6是规范，js是规范的实现）</li>
-<li>左侧固定，右侧自适应</li>
-<li>扁平化数组的方法-将多维变成1维（array falt,正则表达式，递归，reduce,…,json.parse）</li>
-<li>判断数组类型的方法有哪几种（isArray,instanceOf,typeof,constructor,object.portottype.toString）</li>
-<li>vuex有哪些功能</li>
-<li>webpack的常见配置</li>
-<li>vue-cli的底层</li>
-<li>window.open([URL], [窗口名称], [参数字符串])</li>
-<li>手机和邮箱的正则表达式</li>
-<li>生成一个2-32的随机数组 （random*30+2）</li>
-<li>单页面应用有哪些优点(简洁，符合seo)</li>
-<li>对象有哪些遍历方法(for in,Object.keys,Object.getOwnPropertyNames-返回一个数组)</li>
-<li>class 和构造函数创建对象有什么不同</li>
-<li>fetch 是怎么实现的</li>
-<li>原型链</li>
-<li>扩展运算符<a target="_blank" rel="noopener" href="https://www.cnblogs.com/minigrasshopper/p/9156027.html">链接</a></li>
+<li><p>vue 双向绑定原理</p>
+</li>
+<li><p>什么是跨域，限制了什么，不同源的话会进行什么策略，jsonp,nigix 代理，websocket,php 端修改 header</p>
+</li>
+<li><p>this 的指向问题（apply,call,bind）</p>
+<blockquote>
+<p>bind 返回的是一个新的函数，你必须调用它才会被执行。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj.myFun.call(db,<span class="string">&#x27;成都&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>)；　　　　 <span class="comment">// 德玛 年龄 99  来自 成都去往上海</span></span><br><span class="line">obj.myFun.apply(db,[<span class="string">&#x27;成都&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>]);      <span class="comment">// 德玛 年龄 99  来自 成都去往上海  </span></span><br><span class="line">obj.myFun.bind(db,<span class="string">&#x27;成都&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>)();       <span class="comment">// 德玛 年龄 99  来自 成都去往上海</span></span><br><span class="line">obj.myFun.bind(db,[<span class="string">&#x27;成都&#x27;</span>,<span class="string">&#x27;上海&#x27;</span>])();			<span class="comment">// 德玛 年龄 99  来自 成都, 上海去往 undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>promise 和 async await 的区别</p>
+</li>
+<li><p>es6 的新特性（es6 是规范，js 是规范的实现）</p>
+</li>
+<li><p>左侧固定，右侧自适应</p>
+</li>
+<li><p>扁平化数组的方法-将多维变成 1 维（array falt,正则表达式，递归，reduce,…,json.parse）</p>
+</li>
+<li><p>判断数组类型的方法有哪几种（isArray,instanceOf,typeof,constructor,object.portottype.toString）</p>
+</li>
+<li><p>vuex 有哪些功能</p>
+</li>
+<li><p>webpack 的常见配置</p>
+</li>
+<li><p>vue-cli 的底层</p>
+</li>
+<li><p>window.open([URL], [窗口名称], [参数字符串])</p>
+</li>
+<li><p>手机和邮箱的正则表达式</p>
+</li>
+<li><p>生成一个 2-32 的随机数组 （random*30+2）</p>
+</li>
+<li><p>单页面应用有哪些优点(简洁，符合 seo)</p>
+</li>
+<li><p>对象有哪些遍历方法(for in,Object.keys,Object.getOwnPropertyNames-返回一个数组)</p>
+</li>
+<li><p>class 和构造函数创建对象有什么不同</p>
+</li>
+<li><p>fetch 是怎么实现的</p>
+</li>
+<li><p>原型链</p>
+</li>
+<li><p>  扩展运算符<a target="_blank" rel="noopener" href="https://www.cnblogs.com/minigrasshopper/p/9156027.html">链接</a></p>
+</li>
 </ul>
 <h2 id="生命周期函数面试题"><a href="#生命周期函数面试题" class="headerlink" title="生命周期函数面试题"></a>生命周期函数面试题</h2><ul>
-<li>什么是vue生命周期</li>
+<li>  什么是 vue 生命周期</li>
 </ul>
 <blockquote>
-<p>指vue实例对象从创建之初到销毁的过程，再这个过程中可以调用对应的钩子函数 来管理组件数据和渲染DOM</p>
+<p>指 vue 实例对象从创建之初到销毁的过程，再这个过程中可以调用对应的钩子函数 来管理组件数据和渲染 DOM</p>
 </blockquote>
 <ul>
-<li>第一次加载vue会触发哪些钩子函数</li>
+<li>  第一次加载 vue 会触发哪些钩子函数</li>
 </ul>
 <blockquote>
 <p>beforeCreate, created, beforeMount, mounted</p>
 </blockquote>
 <ul>
-<li><p>VUE生命周期详解 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94601709">链接</a></p>
+<li><p>  VUE 生命周期详解 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94601709">链接</a></p>
 </li>
-<li><p>VUE生命周期和nextTick <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/46c9d777cab1">链接</a></p>
+<li><p>  VUE 生命周期和 nextTick <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/46c9d777cab1">链接</a></p>
 </li>
 </ul>
-<h2 id="vue路由面试题"><a href="#vue路由面试题" class="headerlink" title="vue路由面试题"></a>vue路由面试题</h2><ul>
-<li>mvvm框架是什么</li>
-<li>vue-router是什么，他有哪些组件</li>
-<li>active-class 是那个组件的属性</li>
-<li>路由模式（hash h5 history）</li>
+<h2 id="vue-路由面试题"><a href="#vue-路由面试题" class="headerlink" title="vue 路由面试题"></a>vue 路由面试题</h2><ul>
+<li>  mvvm 框架是什么</li>
+<li>  vue-router 是什么，他有哪些组件</li>
+<li>  active-class 是那个组件的属性</li>
+<li>  路由模式（hash h5 history）</li>
 </ul>
 <blockquote>
-<p>hash 有 #<br>history 无# （需要server支持-需要接口改）</p>
+<p>hash 有 #<br>history 无# （需要 server 支持-需要接口改）</p>
 </blockquote>
 <ul>
-<li>路由配置（动态路由，懒加载）</li>
+<li>  路由配置（动态路由，懒加载）</li>
 </ul>
-<h2 id="JS面试题"><a href="#JS面试题" class="headerlink" title="JS面试题"></a>JS面试题</h2><ul>
-<li>for of 和 for in 的区别</li>
-<li>如何实现深拷贝</li>
+<h2 id="JS-面试题"><a href="#JS-面试题" class="headerlink" title="JS 面试题"></a>JS 面试题</h2><ul>
+<li>  for of 和 for in 的区别</li>
+<li>  如何实现深拷贝</li>
 </ul>
 <blockquote>
-<p>利用json的pares和 stringfy</p>
+<p>利用 json 的 pares 和 stringfy</p>
 <blockquote>
 <p>利用递归来实现每一层都重新创建对象并赋值</p>
 <blockquote>
-<p>Contact，slice 可以实现对原数组的拷贝 不会修改原数组 会返回一个修改后的数组<br>contact 只会对数组的第一层进行深拷贝<br>Es6 使用object.assign() 实现深拷贝</p>
+<p>Contact，slice 可以实现对原数组的拷贝 不会修改原数组 会返回一个修改后的数组<br>contact 只会对数组的第一层进行深拷贝<br>Es6 使用 object.assign() 实现深拷贝</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <ul>
-<li>Const 和 let 的区别 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dupd/p/6096235.html">链接</a></li>
+<li>  Const 和 let 的区别 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dupd/p/6096235.html">链接</a></li>
 </ul>
 <blockquote>
-<p>let与const都是只在声明所在的块级作用域内有效。</p>
+<p>let 与 const 都是只在声明所在的块级作用域内有效。</p>
 <blockquote>
-<p>let声明的变量可以改变，值和类型都可以改变，没有限制。</p>
+<p>let 声明的变量可以改变，值和类型都可以改变，没有限制。</p>
 <blockquote>
-<p>const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。</p>
+<p>const 声明的变量不得改变值，这意味着，const 一旦声明变量，就必须立即初始化，不能留到以后赋值。</p>
 <blockquote>
-<p>对于复合类型的变量，如数组和对象，变量名不指向数据，而是指向数据所在的地址。const命令只是保证变量名指向的地址不变，并不保证该地址的数据不变，所以将一个对象声明为常量必须非常小心。</p>
+<p>对于复合类型的变量，如数组和对象，变量名不指向数据，而是指向数据所在的地址。const 命令只是保证变量名指向的地址不变，并不保证该地址的数据不变，所以将一个对象声明为常量必须非常小心。</p>
 <blockquote>
-<p>如果想让定义的对象或数组的内部数据也不能够修改和改变，可以使用object.freeze(names)进行冻结，这样为对象添加新属性就不起作用。除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数</p>
+<p>如果想让定义的对象或数组的内部数据也不能够修改和改变，可以使用 object.freeze(names)进行冻结，这样为对象添加新属性就不起作用。除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数</p>
 </blockquote>
 </blockquote>
 </blockquote>
 </blockquote>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> constantize = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach( <span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">typeof</span> obj[key] === <span class="string">&#x27;object&#x27;</span> ) &#123;</span><br><span class="line">      constantize( obj[key] );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> constantize = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">    <span class="built_in">Object</span>.keys(obj).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> obj[key] === <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">            constantize(obj[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>Object.freeze()方法 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fc235bdf1179">链接</a></li>
+<li>  Object.freeze()方法 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fc235bdf1179">链接</a></li>
 </ul>
 <blockquote>
 <p>接收一个参数，如果此参数是一个对象，则此方法把这个对象冻结，如果是其他类型则不会报错，无影响。</p>
 <blockquote>
 <p>被冻结的对象不能修改、添加、删除其属性或者属性值</p>
 <blockquote>
-<p>一个大的数据对象里，在你确信它不需要改变的时候，你可以给他freeze()，可以大大的增加性能。</p>
+<p>一个大的数据对象里，在你确信它不需要改变的时候，你可以给他 freeze()，可以大大的增加性能。</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <ul>
-<li>JAVASCRIPT执行机制（任务队列，宏任务和微任务）</li>
-<li>v-model双向绑定原理</li>
+<li>  JAVASCRIPT 执行机制（任务队列，宏任务和微任务）</li>
+<li>  v-model 双向绑定原理</li>
 </ul>
 <blockquote>
-<p>Observer监听器:用来监听属性的变化通知订阅者（object.definProperty）<br>Watcher订阅者:收到属性的变化，然后更新视图<br>Complie解析器:解析指令，初始化模版，绑定订阅者</p>
+<p>Observer 监听器:用来监听属性的变化通知订阅者（object.definProperty）<br>Watcher 订阅者:收到属性的变化，然后更新视图<br>Complie 解析器:解析指令，初始化模版，绑定订阅者</p>
 </blockquote>
 <ul>
-<li>什么是闭包</li>
-<li>this的指向问题</li>
-<li>$router和$route的区别</li>
-<li>计算属性如何使用</li>
+<li>  什么是闭包</li>
+<li>  this 的指向问题</li>
+<li>  $router和$route 的区别</li>
+<li>  计算属性如何使用</li>
 </ul>
 <blockquote>
-<p>$route为当前router跳转对象里面可以获取name、path、query、params等</p>
+<p>$route 为当前 router 跳转对象里面可以获取 name、path、query、params 等</p>
 <blockquote>
-<p>$router为VueRouter实例，想要导航到不同URL，则使用$router.push方法</p>
+<p>$router为VueRouter实例，想要导航到不同URL，则使用$router.push 方法</p>
 <blockquote>
-<p>返回上一个history也是使用$router.go方法</p>
+<p>返回上一个 history 也是使用$router.go 方法</p>
 </blockquote>
 </blockquote>
 </blockquote>
 <ul>
-<li>map对象</li>
-<li>instanceof</li>
-<li>shifit,unshift,pop,push</li>
-<li>while循环之遥符合条件会一直执行</li>
-<li>charAt(key) 可以返回指定位置的字符</li>
-<li>什么是链表 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f254ec665e57">链表</a></li>
-<li>手写购物车</li>
-<li>同步和异步的区别</li>
-<li>var let const 的区别</li>
+<li>  map 对象</li>
+<li>  instanceof</li>
+<li>  shifit,unshift,pop,push</li>
+<li>  while 循环之遥符合条件会一直执行</li>
+<li>  charAt(key) 可以返回指定位置的字符</li>
+<li>  什么是链表 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f254ec665e57">链表</a></li>
+<li>  手写购物车</li>
+<li>  同步和异步的区别</li>
+<li>  var let const 的区别</li>
 </ul>
 <blockquote>
 <ol>
@@ -582,65 +671,62 @@
 <li>const 声明一个只读的变量（数组,对象），常量(字符，数字，布尔)的值不能改变（声明必须赋值）</li>
 </ol>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">obj.name = <span class="string">&#x27;aaa&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line">obj.name = <span class="string">&quot;aaa&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>函数作用域 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/mysterious-killer/p/10275403.html">链接</a></li>
-<li>箭头函数 (首先是普通函数的简化)</li>
+<li>  函数作用域 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/mysterious-killer/p/10275403.html">链接</a></li>
+<li>  箭头函数 (首先是普通函数的简化)</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> v</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f = <span class="function">() =&gt;</span> <span class="number">123</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f = <span class="function">(<span class="params">v</span>) =&gt;</span> v;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> f = <span class="function">() =&gt;</span> <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>数据结构 （set map）</p>
-</li>
-<li><p>set 类似于属于数组，成员是唯一的</p>
-</li>
-<li><p>map 类似于对象</p>
+<li>  数据结构 （set map）</li>
+<li>  set 类似于属于数组，成员是唯一的</li>
+<li>  map 类似于对象</li>
+</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">a.add(<span class="number">1</span>).add(<span class="number">2</span>).add(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">var</span> arr3 = [...new <span class="built_in">Set</span>(arr2)]可以直接去重</span><br><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">m.set(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;any&#x27;</span>).set(<span class="string">&#x27;age&#x27;</span>,<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> （<span class="keyword">let</span> [key,value] <span class="keyword">of</span> m) 可以获取键和值</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>防抖（再n 秒内触发重新计算）</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timeout) <span class="built_in">clearTimeout</span>(timeout)</span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     func.apply(<span class="built_in">this</span>)<span class="comment">//执行func函数</span></span><br><span class="line">    &#125;,wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timeout) <span class="built_in">clearTimeout</span>(timeout)</span><br><span class="line">    <span class="keyword">let</span> callNow = !timeout</span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     func.apply(<span class="built_in">this</span>)<span class="comment">//执行func函数</span></span><br><span class="line">    &#125;,wait)</span><br><span class="line">    <span class="keyword">if</span>(callNow) fun.apply(<span class="built_in">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>节流（再n秒内只执行一次函数）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> function throttle (func, wait) &#123;</span><br><span class="line">	let timeout</span><br><span class="line">	return function() &#123;</span><br><span class="line">	if(!timeout) &#123;</span><br><span class="line">		timeout &#x3D; setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">		timeout &#x3D; null</span><br><span class="line">		fun.apply()</span><br><span class="line">		&#125;, wait)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">function throttle(func, wait) &#123;</span><br><span class="line">	let prev &#x3D; 0</span><br><span class="line">	return function()&#123;</span><br><span class="line">	let now &#x3D; Date.now()</span><br><span class="line">	if(now - prev &gt; wait) &#123;</span><br><span class="line">	func.apply(this)</span><br><span class="line">	prev &#x3D; now</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;&#x2F;&#x2F;时间戳</span><br></pre></td></tr></table></figure>
+<li>  防抖（再 n 秒内触发重新计算）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timeout) <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">        timeout = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            func.apply(<span class="built_in">this</span>); <span class="comment">//执行func函数</span></span><br><span class="line">        &#125;, wait);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var n &#x3D; 123</span><br><span class="line">function f1()&#123;</span><br><span class="line">	console.log(n)</span><br><span class="line">&#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">	var n &#x3D; 456</span><br><span class="line">	f1()</span><br><span class="line">&#125;</span><br><span class="line">f2() 123</span><br><span class="line">console.log(n) 123</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timeout) <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">        <span class="keyword">let</span> callNow = !timeout;</span><br><span class="line">        timeout = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            func.apply(<span class="built_in">this</span>); <span class="comment">//执行func函数</span></span><br><span class="line">        &#125;, wait);</span><br><span class="line">        <span class="keyword">if</span> (callNow) fun.apply(<span class="built_in">this</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;arguments- js内置对象 参数数组</span><br><span class="line">var length &#x3D; 100</span><br><span class="line">function f1()&#123;</span><br><span class="line">	console.log(this.length) &#x2F;&#x2F;this会变</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">	x: 10,</span><br><span class="line">	f2: function(f1) &#123;</span><br><span class="line">	f1();</span><br><span class="line">	arguments[0]()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.f2(f1, 1)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>预解析，作用域，字面量，arguments</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">	console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">	a: 2,</span><br><span class="line">	f:f</span><br><span class="line">&#125;</span><br><span class="line">var f2 &#x3D; obj.f</span><br><span class="line">var a &#x3D; &#39;hhhh&#39;</span><br><span class="line">f2() &#x2F;&#x2F;无调用者 this &#x3D;&#x3D; window</span><br><span class="line">function f(s) &#123;</span><br><span class="line">	console.log(this.a, s)</span><br><span class="line">	return this.a + s</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">	a: 2</span><br><span class="line">&#125;</span><br><span class="line">var f2 &#x3D; function()&#123;</span><br><span class="line">	return f.apply(obj.arguments)</span><br><span class="line">&#125;</span><br><span class="line">var b &#x3D; f2(3)</span><br><span class="line">console.log(b)</span><br></pre></td></tr></table></figure></li>
-<li><p>call, apply(改变指向)</p>
-</li>
+<ul>
+<li>  节流（再 n 秒内只执行一次函数）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!timeout) &#123;</span><br><span class="line">            timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                timeout = <span class="literal">null</span>;</span><br><span class="line">                fun.apply();</span><br><span class="line">            &#125;, wait);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> prev = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> now = <span class="built_in">Date</span>.now();</span><br><span class="line">        <span class="keyword">if</span> (now - prev &gt; wait) &#123;</span><br><span class="line">            func.apply(<span class="built_in">this</span>);</span><br><span class="line">            prev = now;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125; <span class="comment">//时间戳</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">123</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> n = <span class="number">456</span></span><br><span class="line">	f1()</span><br><span class="line">&#125;</span><br><span class="line">f2() <span class="number">123</span></span><br><span class="line"><span class="built_in">console</span>.log(n) <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//arguments- js内置对象 参数数组</span></span><br><span class="line"><span class="keyword">var</span> length = <span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.length); <span class="comment">//this会变</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    x: <span class="number">10</span>,</span><br><span class="line">    f2: <span class="function"><span class="keyword">function</span>(<span class="params">f1</span>) </span>&#123;</span><br><span class="line">        f1();</span><br><span class="line">        <span class="built_in">arguments</span>[<span class="number">0</span>]();</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">obj.f2(f1, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  预解析，作用域，字面量，arguments</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">    f: f,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f2 = obj.f;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;hhhh&quot;</span>;</span><br><span class="line">f2(); <span class="comment">//无调用者 this == window</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.a, s);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.a + s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f.apply(obj.arguments);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = f2(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  call, apply(改变指向)</li>
 </ul>
 <h2 id="跨域问题总结-（协议，域名，端口不同）"><a href="#跨域问题总结-（协议，域名，端口不同）" class="headerlink" title="跨域问题总结 （协议，域名，端口不同）"></a>跨域问题总结 （协议，域名，端口不同）</h2><ul>
-<li><p>解决方案</p>
-</li>
-<li><p>1.webpack proxy</p>
-</li>
-<li><p>2.jsonp(不推荐)</p>
-</li>
-<li><p>3.nginx（反向代理）</p>
-</li>
-<li><p>4.webpack plugin</p>
-</li>
-<li><p>5.cors(后端解决)</p>
-<h2 id="性能优化，懒加载（jquery-lazyload）-vue-lazyload"><a href="#性能优化，懒加载（jquery-lazyload）-vue-lazyload" class="headerlink" title="性能优化，懒加载（jquery - lazyload）(vue-lazyload)"></a>性能优化，懒加载（jquery - lazyload）(vue-lazyload)</h2></li>
-<li><p>图片加载由 src 引起，当对src赋值时会请求图片资源，基于这个可以利用html5的属性 data-xxx 来保存图片到路径，当我们要加载图片的时候才将 data-xxx的值赋给src,就能实现图片按需加载，也就是懒加载</p>
-</li>
-<li><p>axios数据交互（静态数据，模拟数据，动态数据）</p>
-</li>
+<li>  解决方案</li>
+<li>  1.webpack proxy</li>
+<li>  2.jsonp(不推荐)</li>
+<li>  3.nginx（反向代理）</li>
+<li>  4.webpack plugin</li>
+<li>  5.cors(后端解决)</li>
+</ul>
+<h2 id="性能优化，懒加载（jquery-lazyload）-vue-lazyload"><a href="#性能优化，懒加载（jquery-lazyload）-vue-lazyload" class="headerlink" title="性能优化，懒加载（jquery - lazyload）(vue-lazyload)"></a>性能优化，懒加载（jquery - lazyload）(vue-lazyload)</h2><ul>
+<li>  图片加载由 src 引起，当对 src 赋值时会请求图片资源，基于这个可以利用 html5 的属性 data-xxx 来保存图片到路径，当我们要加载图片的时候才将 data-xxx 的值赋给 src,就能实现图片按需加载，也就是懒加载</li>
+<li>  axios 数据交互（静态数据，模拟数据，动态数据）</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckqhrjsh0000kaeycep2jb2bg" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckr1v9oaz000kiqycgwq667q6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -659,9 +745,9 @@
     </a>
   
   
-    <a href="/2020/03/07/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/07/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端性能优化</div>
+      <div class="article-nav-title">深入理解ES6(尼古拉斯·泽卡斯)</div>
     </a>
   
 </nav>
@@ -677,15 +763,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" rel="tag">https://www.tslang.cn/docs/handbook/type-inference.html</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" style="font-size: 10px;">https://www.tslang.cn/docs/handbook/type-inference.html</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
