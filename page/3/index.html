@@ -810,7 +810,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cktu3u7tf000n1ayc6la17mlz" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/JS%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cktu42am7000na5yc94h38dsa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2193,7 +2193,75 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/07/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6/" data-id="cktu3u7tt000q1ayc79rn3oad" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/07/07/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6/" data-id="cktu42amm000qa5yc0qzx8q0d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-你不知道的javascript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/" class="article-date">
+  <time datetime="2020-03-07T05:09:28.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/">你不知道的javascript(凯尔辛普森)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h2><blockquote>
+<p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤，统称为“编译”。</p>
+</blockquote>
+<ul>
+<li>1.分词/词法分析（Tokenizing/Lexing）</li>
+<li>2.解析/语法分析（Parsing）</li>
+<li>3.代码生成</li>
+</ul>
+<h4 id="理解javascript工作原理"><a href="#理解javascript工作原理" class="headerlink" title="理解javascript工作原理"></a>理解javascript工作原理</h4><ul>
+<li>引擎<ul>
+<li>负责js的编译和执行</li>
+</ul>
+</li>
+<li>编译器<ul>
+<li>负责语法分析及代码生成</li>
+</ul>
+</li>
+<li>作用域<ul>
+<li>负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="comment">//1．遇到var a，编译器会询问作用域是否已经有一个该名称的变量存在于同一个作用域的集合中。如果是，编译器会忽略该声明，继续进行编译；否则它会要求作用域在当前作用域的集合中声明一个新的变量，并命名为a。</span></span><br><span class="line"><span class="comment">//2．接下来编译器会为引擎生成运行时所需的代码，这些代码被用来处理a = 2这个赋值操作。引擎运行时会首先询问作用域，在当前的作用域集合中是否存在一个叫作a的变量。如果是，引擎就会使用这个变量；如果否，引擎会继续查找该变量</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="嵌套作用域"><a href="#嵌套作用域" class="headerlink" title="嵌套作用域"></a>嵌套作用域</h4><blockquote>
+<p>引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。当抵达最外层的全局作用域时，无论找到还是没找到，查找过程都会停止。</p>
+<p>如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。</p>
+<p>赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都会导致关联作用域的赋值操作。</p>
+<p>不成功的RHS引用会导致抛出ReferenceError异常。不成功的LHS引用会导致自动隐式地创建一个全局变量（非严格模式下），该变量使用LHS引用的目标作为标识符，或者抛出ReferenceError异常（严格模式下）。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/" data-id="cktu42al0000ga5ycdfide04h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2271,75 +2339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/03/07/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="cktu3u7sn000g1ayce3cz3g1d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-你不知道的javascript" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/" class="article-date">
-  <time datetime="2020-03-07T05:09:28.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/">你不知道的javascript(凯尔辛普森)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h2><blockquote>
-<p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤，统称为“编译”。</p>
-</blockquote>
-<ul>
-<li>1.分词/词法分析（Tokenizing/Lexing）</li>
-<li>2.解析/语法分析（Parsing）</li>
-<li>3.代码生成</li>
-</ul>
-<h4 id="理解javascript工作原理"><a href="#理解javascript工作原理" class="headerlink" title="理解javascript工作原理"></a>理解javascript工作原理</h4><ul>
-<li>引擎<ul>
-<li>负责js的编译和执行</li>
-</ul>
-</li>
-<li>编译器<ul>
-<li>负责语法分析及代码生成</li>
-</ul>
-</li>
-<li>作用域<ul>
-<li>负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="comment">//1．遇到var a，编译器会询问作用域是否已经有一个该名称的变量存在于同一个作用域的集合中。如果是，编译器会忽略该声明，继续进行编译；否则它会要求作用域在当前作用域的集合中声明一个新的变量，并命名为a。</span></span><br><span class="line"><span class="comment">//2．接下来编译器会为引擎生成运行时所需的代码，这些代码被用来处理a = 2这个赋值操作。引擎运行时会首先询问作用域，在当前的作用域集合中是否存在一个叫作a的变量。如果是，引擎就会使用这个变量；如果否，引擎会继续查找该变量</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="嵌套作用域"><a href="#嵌套作用域" class="headerlink" title="嵌套作用域"></a>嵌套作用域</h4><blockquote>
-<p>引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。当抵达最外层的全局作用域时，无论找到还是没找到，查找过程都会停止。</p>
-<p>如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。</p>
-<p>赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都会导致关联作用域的赋值操作。</p>
-<p>不成功的RHS引用会导致抛出ReferenceError异常。不成功的LHS引用会导致自动隐式地创建一个全局变量（非严格模式下），该变量使用LHS引用的目标作为标识符，或者抛出ReferenceError异常（严格模式下）。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/03/07/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript/" data-id="cktu3u7so000h1aycaohp7hto" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/03/07/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="cktu42al1000ha5ycgwqw57m4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2452,7 +2452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/03/01/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" data-id="cktu3u7sq000k1ayc77rm4l11" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/03/01/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" data-id="cktu42al5000ka5yc9u2tergc" class="article-share-link">Share</a>
       
       
     </footer>
