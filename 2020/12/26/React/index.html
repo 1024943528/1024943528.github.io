@@ -7,15 +7,15 @@
   
   <title>React | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="特点 单向数据流，没有实现数据绑定（数据&#x3D;&gt;视图&#x3D;&gt;事件&#x3D;&gt;数据） 使用虚拟dom实现dom渲染，减少dom的操作  jsx优点 执行更快，编译js代码优化 类型更加安全，编译过程出错就不能编译，及时发现错误 jsx便携更加简单快速（没有vue好  注意 jsx必须有跟节点 html元素要小写，大写则会被当作组件 添加组件属性，有一个地方需要注意，就是 class 属性需要写成">
+  <meta name="description" content="1.jsx优点 执行更快，编译js代码优化  类型更加安全，编译过程出错就不能编译，及时发现错误  jsx便携更加简单快速（没有vue好) 注意 jsx必须有根节点  html元素要小写，大写则会被当作组件  使用 camelCase（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定  添加组件属性，有一个地方需要注意，就是 class 属性需要写成 className ，fo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React">
 <meta property="og:url" content="http://example.com/2020/12/26/React/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="特点 单向数据流，没有实现数据绑定（数据&#x3D;&gt;视图&#x3D;&gt;事件&#x3D;&gt;数据） 使用虚拟dom实现dom渲染，减少dom的操作  jsx优点 执行更快，编译js代码优化 类型更加安全，编译过程出错就不能编译，及时发现错误 jsx便携更加简单快速（没有vue好  注意 jsx必须有跟节点 html元素要小写，大写则会被当作组件 添加组件属性，有一个地方需要注意，就是 class 属性需要写成">
+<meta property="og:description" content="1.jsx优点 执行更快，编译js代码优化  类型更加安全，编译过程出错就不能编译，及时发现错误  jsx便携更加简单快速（没有vue好) 注意 jsx必须有根节点  html元素要小写，大写则会被当作组件  使用 camelCase（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定  添加组件属性，有一个地方需要注意，就是 class 属性需要写成 className ，fo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-26T05:47:17.000Z">
-<meta property="article:modified_time" content="2021-03-01T12:53:34.915Z">
+<meta property="article:modified_time" content="2021-08-15T07:59:53.548Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -88,62 +88,385 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>单向数据流，没有实现数据绑定（数据=&gt;视图=&gt;事件=&gt;数据）</li>
-<li>使用虚拟dom实现dom渲染，减少dom的操作</li>
+        <h2 id="1-jsx优点"><a href="#1-jsx优点" class="headerlink" title="1.jsx优点"></a>1.jsx优点</h2><ul>
+<li><p>执行更快，编译js代码优化</p>
+</li>
+<li><p>类型更加安全，编译过程出错就不能编译，及时发现错误</p>
+</li>
+<li><p>jsx便携更加简单快速（没有vue好)</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3></li>
+<li><p>jsx必须有根节点</p>
+</li>
+<li><p>html元素要小写，大写则会被当作组件</p>
+</li>
+<li><p>使用 <code>camelCase</code>（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定</p>
+</li>
+<li><p>添加组件属性，有一个地方需要注意，就是 class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字</p>
+</li>
+<li><p>this.props 对象的属性与组件的属性一一对应，但是有一个例外，就是 this.props.children 属性。它表示组件的所有子节点</p>
+</li>
+<li><p>这里需要注意， this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array.</p>
+</li>
 </ul>
-<h3 id="jsx优点"><a href="#jsx优点" class="headerlink" title="jsx优点"></a>jsx优点</h3><ul>
-<li>执行更快，编译js代码优化</li>
-<li>类型更加安全，编译过程出错就不能编译，及时发现错误</li>
-<li>jsx便携更加简单快速（没有vue好</li>
+<blockquote>
+<p>Babel 会把 JSX 转译成一个名为 <code>React.createElement()</code> 函数调用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const element &#x3D; (</span><br><span class="line">  &lt;h1 className&#x3D;&quot;greeting&quot;&gt;</span><br><span class="line">    Hello, world!</span><br><span class="line">  &lt;&#x2F;h1&gt;</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;完全等效</span><br><span class="line">const element &#x3D; React.createElement(</span><br><span class="line">  &#39;h1&#39;,</span><br><span class="line">  &#123;className: &#39;greeting&#39;&#125;,</span><br><span class="line">  &#39;Hello, world!&#39;</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="深入jsx"><a href="#深入jsx" class="headerlink" title="深入jsx"></a>深入jsx</h4><ul>
+<li>1.jsx类型中使用点语法</li>
+<li>2.用户定义的组件必须已大写字母开头<ul>
+<li>以小写字母开头的元素代表一个 HTML 内置组件，</li>
+<li>大写字母开头的元素则对应着在 JavaScript 引入或自定义的组件</li>
 </ul>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li>jsx必须有跟节点</li>
-<li>html元素要小写，大写则会被当作组件</li>
-<li>添加组件属性，有一个地方需要注意，就是 class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字</li>
-<li>this.props 对象的属性与组件的属性一一对应，但是有一个例外，就是 this.props.children 属性。它表示组件的所有子节点</li>
-<li>这里需要注意， this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array.</li>
+</li>
+<li>3.可以将表达式作为prop</li>
+<li>4.props默认为true</li>
+<li>5.可以使用字符串字面量</li>
+<li>6.使用…来实现属性展开</li>
+<li>7.react必须在作用域内<ul>
+<li>由于 JSX 会编译为 <code>React.createElement</code> 调用形式，所以 <code>React</code> 库也必须包含在 JSX 代码作用域内。</li>
 </ul>
-<h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><ul>
+</li>
+<li>8.布尔类型、Null 以及 Undefined 将会忽略(不会被渲染)<ul>
+<li>如果你想渲染 <code>false</code>、<code>true</code>、<code>null</code>、<code>undefined</code> 等值，你需要先将它们<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion">转换为字符串</a>：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">const MyComponents &#x3D; &#123;</span><br><span class="line">  DatePicker: function DatePicker(props) &#123;</span><br><span class="line">    return &lt;div&gt;Imagine a &#123;props.color&#125; datepicker here.&lt;&#x2F;div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function BlueDatePicker() &#123;</span><br><span class="line">  return &lt;MyComponents.DatePicker color&#x3D;&quot;blue&quot; &#x2F;&gt;;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;;</span><br><span class="line">import &#123; PhotoStory, VideoStory &#125; from &#39;.&#x2F;stories&#39;;</span><br><span class="line"></span><br><span class="line">const components &#x3D; &#123;</span><br><span class="line">  photo: PhotoStory,</span><br><span class="line">  video: VideoStory</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function Story(props) &#123;</span><br><span class="line">  &#x2F;&#x2F; 错误！JSX 类型不能是一个表达式。  </span><br><span class="line">  return &lt;components[props.storyType] story&#x3D;&#123;props.story&#125; &#x2F;&gt;;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;;</span><br><span class="line">import &#123; PhotoStory, VideoStory &#125; from &#39;.&#x2F;stories&#39;;</span><br><span class="line"></span><br><span class="line">const components &#x3D; &#123;</span><br><span class="line">  photo: PhotoStory,</span><br><span class="line">  video: VideoStory</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function Story(props) &#123;</span><br><span class="line">  &#x2F;&#x2F; 正确！JSX 类型可以是大写字母开头的变量。  </span><br><span class="line">  const SpecificStory &#x3D; components[props.storyType]; </span><br><span class="line">  return &lt;SpecificStory story&#x3D;&#123;props.story&#125; &#x2F;&gt;;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;值得注意的是有一些 “falsy” 值，如数字 0，仍然会被 React 渲染。</span><br><span class="line">&#x2F;&#x2F;确保 &amp;&amp; 之前的表达式总是布尔值</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &#123;props.messages.length &amp;&amp;    &lt;MessageList messages&#x3D;&#123;props.messages&#125; &#x2F;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-函数式组件-amp-类组件的区别"><a href="#2-函数式组件-amp-类组件的区别" class="headerlink" title="2.函数式组件 &amp; 类组件的区别"></a>2.函数式组件 &amp; 类组件的区别</h2><ul>
+<li><strong>语法上：</strong>函数组件是一个纯函数，它接收一个props对象返回一个react元素；而类组件需要去继承React.Component并且创建render函数返回react元素。</li>
+<li><strong>状态管理：</strong>因为函数组件是一个纯函数，你不能在组件中使用<code>setState()</code>，这也是为什么把函数组件称作为无状态组件。</li>
+<li><strong>生命周期钩子：</strong>你不能在函数组件中使用生命周期钩子，原因和不能使用<code>state</code>一样，所有的生命周期钩子都来自于继承的<code>React.Component</code>中。</li>
+<li><strong>调用方式：</strong>如果<code>SayHi</code>是一个函数，<code>React</code>需要调用它；如果<code>SayHi</code>是一个类，<code>React</code>需要先用<code>new</code>操作符将其实例化，然后调用刚才生成实例的<code>render</code>方法</li>
+</ul>
+<h2 id="3-props-amp-state"><a href="#3-props-amp-state" class="headerlink" title="3.props &amp; state"></a>3.props &amp; state</h2><blockquote>
+<p><strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。</strong></p>
+<p>State 与 props 类似，但是 state 是私有的，并且完全受控于当前组件。</p>
+</blockquote>
+<h2 id="4-事件处理"><a href="#4-事件处理" class="headerlink" title="4.事件处理"></a>4.事件处理</h2><ul>
+<li><p>React 事件的命名采用小驼峰式（camelCase），而不是纯小写。</p>
+</li>
+<li><p>使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串。</p>
+</li>
+<li><p>不能通过返回 <code>false</code> 的方式阻止默认行为。你必须显式的使用 <code>preventDefault</code></p>
+</li>
+<li><pre><code class="react">//为了在回调中使用 `this`，这个绑定是必不可少的
+this.handleClick = this.handleClick.bind(this);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- &#96;&#96;&#96;react</span><br><span class="line">  class LoggingButton extends React.Component &#123;</span><br><span class="line">    &#x2F;&#x2F; 此语法确保 &#96;handleClick&#96; 内的 &#96;this&#96; 已被绑定。 </span><br><span class="line">    &#x2F;&#x2F; 注意: 这是 *实验性* 语法。 </span><br><span class="line">    handleClick &#x3D; () &#x3D;&gt; &#123;    console.log(&#39;this is:&#39;, this);  &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;</span><br><span class="line">          Click me</span><br><span class="line">        &lt;&#x2F;button&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><pre><code class="react">class LoggingButton extends React.Component &#123;
+  handleClick() &#123;
+    console.log(&#39;this is:&#39;, this);
+  &#125;
+
+  render() &#123;
+    //在回调中使用箭头函数
+    // 此语法确保 `handleClick` 内的 `this` 已被绑定。   
+    return (&lt;button onClick=&#123;() =&gt; this.handleClick()&#125;&gt; 
+                    Click me
+                  &lt;/button&gt;
+    );
+  &#125;
+&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 5.条件渲染</span><br><span class="line"></span><br><span class="line">&gt; React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符 [&#96;if&#96;](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Statements&#x2F;if...else) 或者[条件运算符](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Operators&#x2F;Conditional_Operator)去创建元素来表现当前的状态，然后让 React 根据它们来更新 UI。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;react</span><br><span class="line">function Greeting(props) &#123;</span><br><span class="line">  const isLoggedIn &#x3D; props.isLoggedIn;</span><br><span class="line">  if (isLoggedIn) &#123;</span><br><span class="line">    return &lt;UserGreeting &#x2F;&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  return &lt;GuestGreeting &#x2F;&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</code></pre>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;阻止组件渲染</span><br><span class="line">&#x2F;&#x2F; render 方法直接返回 null，而不进行任何渲染</span><br><span class="line">&#x2F;&#x2F;在组件的 render 方法中返回 null 并不会影响组件的生命周期。</span><br><span class="line">function WarningBanner(props) &#123;</span><br><span class="line">  if (!props.warn) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div className&#x3D;&quot;warning&quot;&gt;</span><br><span class="line">      Warning!</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-列表-amp-key"><a href="#6-列表-amp-key" class="headerlink" title="6.列表&amp;key"></a>6.列表&amp;key</h2><h2 id="7-react组件api"><a href="#7-react组件api" class="headerlink" title="7.react组件api"></a>7.react组件api</h2><ul>
+<li><p>设置状态：setState</p>
+<ul>
+<li><pre><code class="react">setState(object nextState[, function callback])
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - **nextState**，将要设置的新状态，该状态会和当前的**state**合并</span><br><span class="line"></span><br><span class="line">  - **callback**，可选参数，回调函数。该函数会在**setState**设置成功，且组件重新渲染后调用。</span><br><span class="line"></span><br><span class="line">  - 不能在组件内部通过this.state修改状态，因为该状态会在调用setState()后被替换。</span><br><span class="line"></span><br><span class="line">  - setState()并不会立即改变this.state，而是创建一个即将处理的state。</span><br><span class="line"></span><br><span class="line">  - setState()并不一定是同步的，为了提升性能React会批量执行state和DOM渲染。</span><br><span class="line"></span><br><span class="line">  - setState()总是会触发一次组件重绘，除非在shouldComponentUpdate()中实现了一些条件渲染逻辑。</span><br><span class="line"></span><br><span class="line">- 替换状态：replaceState</span><br><span class="line"></span><br><span class="line">  - **replaceState()**方法与**setState()**类似，但是方法只会保留**nextState**中状态，原**state**不在**nextState**中的状态都会被删除。</span><br><span class="line"></span><br><span class="line">- 设置属性：setProps</span><br><span class="line"></span><br><span class="line">  - **props**相当于组件的数据流，它总是会从父组件向下传递至所有的子组件中。当和一个外部的JavaScript应用集成时，我们可能会需要向组件传递数据或通知**React.render()**组件需要重新渲染，可以使用**setProps()**。</span><br><span class="line"></span><br><span class="line">- 替换属性：replaceProps</span><br><span class="line"></span><br><span class="line">  - **replaceProps()**方法与**setProps**类似，但它会删除原有 props。</span><br><span class="line"></span><br><span class="line">- 强制更新：forceUpdate</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    forceUpdate([function callback])</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>forceUpdate()方法会使组件调用自身的render()方法重新渲染组件，组件的子组件也会调用自己的render()。但是，组件重新渲染时，依然会读取this.props和this.state，如果状态没有改变，那么React只会更新DOM。</p>
+</li>
+<li><p>forceUpdate()方法适用于this.props和this.state之外的组件重绘（如：修改了this.state后），通过该方法通知React需要调用render()</p>
+<p>一般来说，应该尽量避免使用forceUpdate()，而仅从this.props和this.state中读取状态并由React触发render()调用。</p>
+</li>
+</ul>
+</li>
+<li><p>获取DOM节点：findDOMNode</p>
+<ul>
+<li>如果组件已经挂载到DOM中，该方法返回对应的本地浏览器 DOM 元素。</li>
+</ul>
+</li>
+<li><p>判断组件挂载状态：isMounted(isMounted 的方法在 ES6 中已经废除。)</p>
+<ul>
+<li>返回值：<strong>true</strong>或<strong>false</strong>，表示组件是否已挂载到DOM中</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">    this.mounted &#x3D; true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentWillUnmount() &#123;</span><br><span class="line">    this.mounted &#x3D; false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-react生命周期"><a href="#8-react生命周期" class="headerlink" title="8.react生命周期"></a>8.react生命周期</h2><ul>
+<li>componentWillMount()——在初始渲染发生之前，即在React将组件插入DOM之前立即调用一次。请务必注意，在此方法中调用 this.setState() 不会触发重新渲染。</li>
+<li>componentDidMount()——在渲染函数之后触发此方法。现在可以访问更新的DOM，这意味着该方法是初始化其他需要访问DOM 的 Javascript 库以及数据提取操作的最佳选择。</li>
+<li>componentWillReceiveProps()——componentWillReceiveProps()在组件接收新props时调用。在调用render()方法之前，我们可以用这个方法对prop过渡做出反应。在此函数中调用 this.setState() 不会触发额外的重新渲染，我们可以通过this.props访问旧的 props。</li>
+<li>shouldComponentUpdate()——我们可以用它来决定下一个组件的状态是否应触发重新渲染。此方法返回一个布尔值，默认为true。但是我们可以返回false，并且不会调用以下方法：</li>
+<li>componentWillUpdate()——当接收到新的 props 或状态时，在渲染（更新）之前立即调用此方法。我们可以用它在更新之前做准备，但是不允许使用this.setState()。</li>
+<li>componentDidUpdate()——React 更新 DOM 后立即调用此方法。我们可以使用此方法与更新后的 DOM 交互，或执行任何渲染后操作。</li>
+<li>componentWillUnmount()——从DOM卸载组件之前立即调用此方法。我们可以用它执行可能需要的任何清理工作。</li>
+</ul>
+<h2 id="9-Refs转发"><a href="#9-Refs转发" class="headerlink" title="9.Refs转发"></a>9.Refs转发</h2><blockquote>
+<p>Ref 转发是一项将 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">ref</a> 自动地通过组件传递到其一子组件的技巧。（组件接收ref,将它交给子组件使用）</p>
+<p>1.转发refs到dom组件</p>
+<p>2.在高阶组件中转发refs</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const FancyButton &#x3D; React.forwardRef((props, ref) &#x3D;&gt; (  &lt;button ref&#x3D;&#123;ref&#125; className&#x3D;&quot;FancyButton&quot;&gt;    &#123;props.children&#125;</span><br><span class="line">  &lt;&#x2F;button&gt;</span><br><span class="line">));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 你可以直接获取 DOM button 的 ref：</span><br><span class="line">const ref &#x3D; React.createRef();</span><br><span class="line">&lt;FancyButton ref&#x3D;&#123;ref&#125;&gt;Click me!&lt;&#x2F;FancyButton&gt;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>我们通过调用 <code>React.createRef</code> 创建了一个 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">React ref</a> 并将其赋值给 <code>ref</code> 变量。</li>
+<li>我们通过指定 <code>ref</code> 为 JSX 属性，将其向下传递给 <code>&lt;FancyButton ref=&#123;ref&#125;&gt;</code>。</li>
+<li>React 传递 <code>ref</code> 给 <code>forwardRef</code> 内函数 <code>(props, ref) =&gt; ...</code>，作为其第二个参数。</li>
+<li>我们向下转发该 <code>ref</code> 参数到 <code>&lt;button ref=&#123;ref&#125;&gt;</code>，将其指定为 JSX 属性。</li>
+<li>当 ref 挂载完成，<code>ref.current</code> 将指向 <code>&lt;button&gt;</code> DOM 节点。</li>
+</ol>
+<blockquote>
+<p>第二个参数 <code>ref</code> 只在使用 <code>React.forwardRef</code> 定义组件时存在。常规函数和 class 组件不接收 <code>ref</code> 参数，且 props 中也不存在 <code>ref</code>。</p>
+<p>Ref 转发不仅限于 DOM 组件，你也可以转发 refs 到 class 组件实例中。</p>
+</blockquote>
+<h2 id="10-React-lazy-尚未支持"><a href="#10-React-lazy-尚未支持" class="headerlink" title="10.React.lazy 尚未支持"></a>10.React.lazy 尚未支持</h2><blockquote>
+<p>注意:</p>
+<p><code>React.lazy</code> 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 <a target="_blank" rel="noopener" href="https://github.com/gregberge/loadable-components">Loadable Components</a> 这个库。它有一个很棒的<a target="_blank" rel="noopener" href="https://loadable-components.com/docs/server-side-rendering/">服务端渲染打包指南</a>。</p>
+<p><code>React.lazy</code> 函数能让你像渲染常规组件一样处理动态引入（的组件）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;使用之前</span><br><span class="line">import OtherComponent from &#39;.&#x2F;OtherComponent&#39;;</span><br><span class="line">&#x2F;&#x2F;使用之后</span><br><span class="line">&#x2F;&#x2F;React.lazy 接受一个函数，这个函数需要动态调用 import()。</span><br><span class="line">&#x2F;&#x2F;它必须返回一个 Promise，该 Promise 需要 resolve 一个 default export 的 React 组件。</span><br><span class="line">const OtherComponent &#x3D; React.lazy(() &#x3D;&gt; import(&#39;.&#x2F;OtherComponent&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="11-错误边界"><a href="#11-错误边界" class="headerlink" title="11.错误边界"></a>11.错误边界</h2><blockquote>
+<p>错误边界是一种 React 组件，这种组件<strong>可以捕获发生在其子组件树任何位置的 JavaScript 错误，并打印这些错误，同时展示降级 UI</strong>，而并不会渲染那些发生崩溃的子组件树。错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。</p>
+</blockquote>
+<blockquote>
+<p>注意</p>
+<p>错误边界<strong>无法</strong>捕获以下场景中产生的错误：</p>
+<ul>
+<li>事件处理（<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/error-boundaries.html#how-about-event-handlers">了解更多</a>）</li>
+<li>异步代码（例如 <code>setTimeout</code> 或 <code>requestAnimationFrame</code> 回调函数）</li>
+<li>服务端渲染</li>
+<li>它自身抛出来的错误（并非它的子组件）</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class ErrorBoundary extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123; hasError: false &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  static getDerivedStateFromError(error) &#123;</span><br><span class="line">    &#x2F;&#x2F; 更新 state 使下一次渲染能够显示降级后的 UI</span><br><span class="line">    return &#123; hasError: true &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidCatch(error, errorInfo) &#123;</span><br><span class="line">    &#x2F;&#x2F; 你同样可以将错误日志上报给服务器</span><br><span class="line">    logErrorToMyService(error, errorInfo);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    if (this.state.hasError) &#123;</span><br><span class="line">      &#x2F;&#x2F; 你可以自定义降级后的 UI 并渲染</span><br><span class="line">      return &lt;h1&gt;Something went wrong.&lt;&#x2F;h1&gt;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return this.props.children; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="12-高阶组件"><a href="#12-高阶组件" class="headerlink" title="12. 高阶组件"></a>12. 高阶组件</h2><blockquote>
+<p>具体而言，<strong>高阶组件是参数为组件，返回值为新组件的函数。</strong></p>
+</blockquote>
+<blockquote>
+<p>1.高阶组件可以接收所有props</p>
+<p>2.可以使用 <code>React.forwardRef</code> API 明确地将 refs 转发到子组件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function logProps(Component) &#123;</span><br><span class="line">  class LogProps extends React.Component &#123;</span><br><span class="line">    componentDidUpdate(prevProps) &#123;</span><br><span class="line">      console.log(&#39;old props:&#39;, prevProps);</span><br><span class="line">      console.log(&#39;new props:&#39;, this.props);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      const &#123;forwardedRef, ...rest&#125; &#x3D; this.props;</span><br><span class="line">      &#x2F;&#x2F; 将自定义的 prop 属性 “forwardedRef” 定义为 ref</span><br><span class="line">      return &lt;Component ref&#x3D;&#123;forwardedRef&#125; &#123;...rest&#125; &#x2F;&gt;;    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 注意 React.forwardRef 回调的第二个参数 “ref”。</span><br><span class="line">  &#x2F;&#x2F; 我们可以将其作为常规 prop 属性传递给 LogProps，例如 “forwardedRef”</span><br><span class="line">  &#x2F;&#x2F; 然后它就可以被挂载到被 LogProps 包裹的子组件上。</span><br><span class="line">  return React.forwardRef((props, ref) &#x3D;&gt; &#123;    return &lt;LogProps &#123;...props&#125; forwardedRef&#x3D;&#123;ref&#125; &#x2F;&gt;;  &#125;);&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><blockquote>
+<p>1.将不相关的 props 传递给被包裹的组件</p>
+<p>2.不再高阶组件中修改原型，使用组合（会导致与其他高阶组件产生冲突）</p>
+<p>3.最大化可组合性</p>
+<p>4.包装显示名称以便轻松调试</p>
+<p>5.不要再render方法中使用高阶组件</p>
+<p>6.refs不会被传递</p>
+<p>7.务必复制静态方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import hoistNonReactStatic from &#39;hoist-non-react-statics&#39;;</span><br><span class="line">function enhance(WrappedComponent) &#123;</span><br><span class="line">  class Enhance extends React.Component &#123;&#x2F;*...*&#x2F;&#125;</span><br><span class="line">  &#x2F;&#x2F; 必须准确知道应该拷贝哪些方法 </span><br><span class="line">  Enhance.staticMethod &#x3D; WrappedComponent.staticMethod;</span><br><span class="line">  &#x2F;&#x2F;使用hoistNonReactStatic自动拷贝所有非 React 静态方法:</span><br><span class="line">  hoistNonReactStatic(Enhance, WrappedComponent);</span><br><span class="line">  return Enhance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>除了导出组件，另一个可行的方案是再额外导出这个静态方法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用这种方式代替...</span><br><span class="line">MyComponent.someFunction &#x3D; someFunction;</span><br><span class="line">export default MyComponent;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ...单独导出该方法...</span><br><span class="line">export &#123; someFunction &#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ...并在要使用的组件中，import 它们</span><br><span class="line">import MyComponent, &#123; someFunction &#125; from &#39;.&#x2F;MyComponent.js&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-与第三方库协同-todo"><a href="#14-与第三方库协同-todo" class="headerlink" title="14.与第三方库协同-todo"></a>14.与第三方库协同-todo</h2><pre><code>#### 14-1 集成带有dom操作的插件</code></pre>
+<blockquote>
+<p>React 不会理会 React 自身之外的 DOM 操作。它根据内部虚拟 DOM 来决定是否需要更新，而且如果同一个 DOM 节点被另一个库操作了，React 会觉得困惑而且没有办法恢复。</p>
+</blockquote>
+<h2 id="15-性能优化"><a href="#15-性能优化" class="headerlink" title="15.性能优化"></a>15.性能优化</h2><ul>
+<li><p>虚拟化长列表</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://react-window.now.sh/">react-window</a> 和 <a target="_blank" rel="noopener" href="https://bvaughn.github.io/react-virtualized/">react-virtualized</a> 是热门的虚拟滚动库。 它们提供了多种可复用的组件，用于展示列表、网格和表格数据。 如果你想要一些针对你的应用做定制优化，你也可以创建你自己的虚拟滚动组件，就像 <a target="_blank" rel="noopener" href="https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3">Twitter 所做的</a>。</li>
+</ul>
+</li>
+<li><p>避免调停</p>
+</li>
+<li><p>shouldComponentUpdate 的作用</p>
+</li>
+<li><p>使用开发者工具中的分析器对组件进行分析</p>
+</li>
+<li><p>不改变原来的数据</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign</a> 方法：</li>
+<li>拓展运算符等其他返回一个新数据等方法</li>
+</ul>
+</li>
+</ul>
+<h1 id="16-Portals"><a href="#16-Portals" class="headerlink" title="16.Portals"></a>16.Portals</h1><blockquote>
+<p>Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.createPortal(child, container)</span><br><span class="line">&#x2F;&#x2F;child 是任何可渲染的 React 子元素</span><br><span class="line">&#x2F;&#x2F;container 是一个 DOM 元素</span><br><span class="line">&#x2F;&#x2F;将 child 指定到想要渲染的 container 中去</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一个 portal 的典型用例是当父组件有 <code>overflow: hidden</code> 或 <code>z-index</code> 样式时，但你需要子组件能够在视觉上“跳出”其容器。例如，对话框、悬浮卡以及提示框：</p>
+</blockquote>
+<h4 id="使用portals进行事件冒泡"><a href="#使用portals进行事件冒泡" class="headerlink" title="使用portals进行事件冒泡"></a>使用portals进行事件冒泡</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在 DOM 中有两个容器是兄弟级 （siblings）</span><br><span class="line">const appRoot &#x3D; document.getElementById(&#39;app-root&#39;);</span><br><span class="line">const modalRoot &#x3D; document.getElementById(&#39;modal-root&#39;);</span><br><span class="line"></span><br><span class="line">class Modal extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.el &#x3D; document.createElement(&#39;div&#39;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    &#x2F;&#x2F; 在 Modal 的所有子元素被挂载后，</span><br><span class="line">    &#x2F;&#x2F; 这个 portal 元素会被嵌入到 DOM 树中，</span><br><span class="line">    &#x2F;&#x2F; 这意味着子元素将被挂载到一个分离的 DOM 节点中。</span><br><span class="line">    &#x2F;&#x2F; 如果要求子组件在挂载时可以立刻接入 DOM 树，</span><br><span class="line">    &#x2F;&#x2F; 例如衡量一个 DOM 节点，</span><br><span class="line">    &#x2F;&#x2F; 或者在后代节点中使用 ‘autoFocus’，</span><br><span class="line">    &#x2F;&#x2F; 则需添加 state 到 Modal 中，</span><br><span class="line">    &#x2F;&#x2F; 仅当 Modal 被插入 DOM 树中才能渲染子元素。</span><br><span class="line">    modalRoot.appendChild(this.el);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    modalRoot.removeChild(this.el);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return ReactDOM.createPortal(      this.props.children,      this.el    );  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Parent extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;clicks: 0&#125;;</span><br><span class="line">    this.handleClick &#x3D; this.handleClick.bind(this);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleClick() &#123;    &#x2F;&#x2F; 当子元素里的按钮被点击时，    &#x2F;&#x2F; 这个将会被触发更新父元素的 state，    &#x2F;&#x2F; 即使这个按钮在 DOM 中不是直接关联的后代    this.setState(state &#x3D;&gt; (&#123;      clicks: state.clicks + 1    &#125;));  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div onClick&#x3D;&#123;this.handleClick&#125;&gt;        &lt;p&gt;Number of clicks: &#123;this.state.clicks&#125;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          Open up the browser DevTools</span><br><span class="line">          to observe that the button</span><br><span class="line">          is not a child of the div</span><br><span class="line">          with the onClick handler.</span><br><span class="line">        &lt;&#x2F;p&gt;</span><br><span class="line">        &lt;Modal&gt;          &lt;Child &#x2F;&gt;        &lt;&#x2F;Modal&gt;      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child() &#123;</span><br><span class="line">  &#x2F;&#x2F; 这个按钮的点击事件会冒泡到父元素  &#x2F;&#x2F; 因为这里没有定义 &#39;onClick&#39; 属性  return (</span><br><span class="line">    &lt;div className&#x3D;&quot;modal&quot;&gt;</span><br><span class="line">      &lt;button&gt;Click&lt;&#x2F;button&gt;    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;Parent &#x2F;&gt;, appRoot);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="17-Profiler-API"><a href="#17-Profiler-API" class="headerlink" title="17.Profiler API"></a>17.Profiler API</h1><blockquote>
+<p><code>Profiler</code> 测量渲染一个 React 应用多久渲染一次以及渲染一次的“代价”。 它的目的是识别出应用中渲染较慢的部分，或是可以使用<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations">类似 memoization 优化</a>的部分，并从相关优化中获益。</p>
+<p><code>Profiler</code> 能添加在 React 树中的任何地方来测量树中这部分渲染所带来的开销。 它需要两个 prop ：一个是 <code>id</code>(string)，一个是当组件树中的组件“提交”更新的时候被React调用的回调函数 <code>onRender</code>(function)。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">  &lt;App&gt;</span><br><span class="line">    &lt;Profiler id&#x3D;&quot;Navigation&quot; onRender&#x3D;&#123;callback&#125;&gt;    </span><br><span class="line">      &lt;Navigation &#123;...props&#125; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;Profiler&gt;</span><br><span class="line">    &lt;Profiler id&#x3D;&quot;Main&quot; onRender&#x3D;&#123;callback&#125;&gt;   </span><br><span class="line">      &lt;Main &#123;...props&#125; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;Profiler&gt;</span><br><span class="line">  &lt;&#x2F;App&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="onRender回调"><a href="#onRender回调" class="headerlink" title="onRender回调"></a>onRender回调</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function onRenderCallback(</span><br><span class="line">  id, &#x2F;&#x2F; 发生提交的 Profiler 树的 “id”</span><br><span class="line">  phase, &#x2F;&#x2F; &quot;mount&quot; （如果组件树刚加载） 或者 &quot;update&quot; （如果它重渲染了）之一</span><br><span class="line">  actualDuration, &#x2F;&#x2F; 本次更新 committed 花费的渲染时间</span><br><span class="line">  baseDuration, &#x2F;&#x2F; 估计不使用 memoization 的情况下渲染整颗子树需要的时间</span><br><span class="line">  startTime, &#x2F;&#x2F; 本次更新中 React 开始渲染的时间</span><br><span class="line">  commitTime, &#x2F;&#x2F; 本次更新中 React committed 的时间</span><br><span class="line">  interactions &#x2F;&#x2F; 属于本次更新的 interactions 的集合</span><br><span class="line">) &#123;</span><br><span class="line">  &#x2F;&#x2F; 合计或记录渲染时间。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>d: string</code></strong> - 发生提交的 <code>Profiler</code> 树的 <code>id</code>。 如果有多个 profiler，它能用来分辨树的哪一部分发生了“提交”。</li>
+<li><strong><code>phase: &quot;mount&quot; | &quot;update&quot;</code></strong> - 判断是组件树的第一次装载引起的重渲染，还是由 props、state 或是 hooks 改变引起的重渲染。</li>
+<li><strong><code>actualDuration: number</code></strong> - 本次更新在渲染 <code>Profiler</code> 和它的子代上花费的时间。 这个数值表明使用 memoization 之后能表现得多好。（例如 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-api.html#reactmemo"><code>React.memo</code></a>，<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo"><code>useMemo</code></a>，<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate"><code>shouldComponentUpdate</code></a>）。 理想情况下，由于子代只会因特定的 prop 改变而重渲染，因此这个值应该在第一次装载之后显著下降。</li>
+<li><strong><code>baseDuration: number</code></strong> - 在 <code>Profiler</code> 树中最近一次每一个组件 <code>render</code> 的持续时间。 这个值估计了最差的渲染时间。（例如当它是第一次加载或者组件树没有使用 memoization）。</li>
+<li><strong><code>startTime: number</code></strong> - 本次更新中 React 开始渲染的时间戳。</li>
+<li><strong><code>commitTime: number</code></strong> - 本次更新中 React commit 阶段结束的时间戳。 在一次 commit 中这个值在所有的 profiler 之间是共享的，可以将它们按需分组。</li>
+<li><strong><code>interactions: Set</code></strong> - 当更新被制定时，<a target="_blank" rel="noopener" href="https://fb.me/react-interaction-tracing">“interactions”</a> 的集合会被追踪。（例如当 <code>render</code> 或者 <code>setState</code> 被调用时）。</li>
+</ul>
+<h2 id="18-Fragments"><a href="#18-Fragments" class="headerlink" title="18.Fragments"></a>18.Fragments</h2><blockquote>
+<p>React 中的一个常见模式是一个组件返回多个元素。Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Columns extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;React.Fragment&gt;</span><br><span class="line">        &lt;td&gt;Hello&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;World&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;&#x2F;React.Fragment&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;简写使用，不支持 key 或属性。</span><br><span class="line">class Columns extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;td&gt;Hello&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;World&lt;&#x2F;td&gt;</span><br><span class="line">      &lt;&#x2F;&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;使用显式 &lt;React.Fragment&gt; 语法声明的片段可能具有 key。一个使用场景是将一个集合映射到一个 Fragments 数组 </span><br><span class="line">function Glossary(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;dl&gt;</span><br><span class="line">      &#123;props.items.map(item &#x3D;&gt; (</span><br><span class="line">        &#x2F;&#x2F; 没有&#96;key&#96;，React 会发出一个关键警告</span><br><span class="line">        &lt;React.Fragment key&#x3D;&#123;item.id&#125;&gt;</span><br><span class="line">          &lt;dt&gt;&#123;item.term&#125;&lt;&#x2F;dt&gt;</span><br><span class="line">          &lt;dd&gt;&#123;item.description&#125;&lt;&#x2F;dd&gt;</span><br><span class="line">        &lt;&#x2F;React.Fragment&gt;</span><br><span class="line">      ))&#125;</span><br><span class="line">    &lt;&#x2F;dl&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="19-不实用es6"><a href="#19-不实用es6" class="headerlink" title="19.不实用es6"></a>19.不实用es6</h2><ul>
+<li>如果你还未使用过 ES6，你可以使用 <code>create-react-class</code> 模块：</li>
+<li>声明默认属性</li>
+<li>初始化state</li>
+<li>自动绑定<ul>
+<li>在 constructor 中绑定方法。</li>
+<li>使用箭头函数，比如：<code>onClick=&#123;(e) =&gt; this.handleClick(e)&#125;</code>。</li>
+<li>继续使用 <code>createReactClass</code>。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var createReactClass &#x3D; require(&#39;create-react-class&#39;);</span><br><span class="line">var Greeting &#x3D; createReactClass(&#123;</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var Counter &#x3D; createReactClass(&#123;</span><br><span class="line">  getInitialState: function() &#123;</span><br><span class="line">    return &#123;count: this.props.initialCount&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="20-不实用jsx"><a href="#20-不实用jsx" class="headerlink" title="20.不实用jsx"></a>20.不实用jsx</h2><h2 id="21-Diffing-算法-协调算法"><a href="#21-Diffing-算法-协调算法" class="headerlink" title="21.Diffing 算法 (协调算法)"></a>21.Diffing 算法 (协调算法)</h2><blockquote>
+<p>在某一时间节点调用 React 的 <code>render()</code> 方法，会创建一棵由 React 元素组成的树。在下一次 state 或 props 更新时，相同的 <code>render()</code> 方法会返回一棵不同的树。React 需要基于这两棵树之间的差别来判断如何高效的更新 UI，以保证当前 UI 与最新的树保持同步。</p>
+</blockquote>
+<blockquote>
+<p>A.当对比两棵树时，React 首先比较两棵树的根节点。不同类型的根节点元素会有不同的形态。</p>
+<p>1-1.当根节点为不同类型的元素时，React 会拆卸原有的树并且建立起新的树。</p>
+<p>1-2.当卸载一棵树时，对应的 DOM 节点也会被销毁。组件实例将执行 <code>componentWillUnmount()</code> 方法。</p>
+<p>2.当建立一棵新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 <code>UNSAFE_componentWillMount()</code> 方法，紧接着 <code>componentDidMount()</code> 方法。所有与之前的树相关联的 state 也会被销毁。</p>
+<p>B.当对比两个相同类型的 React 元素时，React 会保留 DOM 节点，仅比对及更新有改变的属性。(明确自己要修改哪些属性)</p>
+<p>1-1在处理完当前节点之后，React 继续对子节点进行递归。</p>
+<p>C.当一个组件更新时，组件实例会保持不变，因此可以在不同的渲染时保持 state 一致。</p>
+<p>D.递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表；当产生差异时，生成一个 mutation。</p>
+</blockquote>
+<h1 id="22-Refs-and-the-DOM"><a href="#22-Refs-and-the-DOM" class="headerlink" title="22.Refs and the DOM"></a>22.Refs and the DOM</h1><blockquote>
+<p>Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。</p>
+<p>在某些情况下，你需要在典型数据流之外强制修改子组件。被修改的子组件可能是一个 React 组件的实例，也可能是一个 DOM 元素。对于这两种情况，React 都提供了解决办法。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>何时使用refs</li>
+</ul>
+<blockquote>
+<ul>
+<li>管理焦点，文本选择或媒体播放。</li>
+<li>触发强制动画。</li>
+<li>集成第三方 DOM 库。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h4 id="创建refs"><a href="#创建refs" class="headerlink" title="创建refs"></a>创建refs</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyComponent extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.myRef &#x3D; React.createRef();  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div ref&#x3D;&#123;this.myRef&#125; &#x2F;&gt;;  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="访问refs"><a href="#访问refs" class="headerlink" title="访问refs"></a>访问refs</h4><p>ref 的值根据节点的类型而有所不同：</p>
+<ul>
+<li>当 <code>ref</code> 属性用于 HTML 元素时，构造函数中使用 <code>React.createRef()</code> 创建的 <code>ref</code> 接收底层 DOM 元素作为其 <code>current</code> 属性。<ul>
+<li>React 会在组件挂载时给 <code>current</code> 属性传入 DOM 元素，并在组件卸载时传入 <code>null</code> 值。<code>ref</code> 会在 <code>componentDidMount</code> 或 <code>componentDidUpdate</code> 生命周期钩子触发前更新。</li>
+</ul>
+</li>
+<li>当 <code>ref</code> 属性用于自定义 class 组件时，<code>ref</code> 对象接收组件的挂载实例作为其 <code>current</code> 属性。</li>
+<li><strong>你不能在函数组件上使用 <code>ref</code> 属性</strong>，因为他们没有实例。<ul>
+<li>可以<strong>在函数组件内部使用 <code>ref</code> 属性</strong>，只要它指向一个 DOM 元素或 class 组件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class AutoFocusTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.textInput &#x3D; React.createRef();  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.textInput.current.focusTextInput();  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;CustomTextInput ref&#x3D;&#123;this.textInput&#125; &#x2F;&gt;    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function CustomTextInput(props) &#123;</span><br><span class="line">  &#x2F;&#x2F; 这里必须声明 textInput，这样 ref 才可以引用它  const textInput &#x3D; useRef(null);</span><br><span class="line">  function handleClick() &#123;</span><br><span class="line">    textInput.current.focus();  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;input</span><br><span class="line">        type&#x3D;&quot;text&quot;</span><br><span class="line">        ref&#x3D;&#123;textInput&#125; &#x2F;&gt;      &lt;input</span><br><span class="line">        type&#x3D;&quot;button&quot;</span><br><span class="line">        value&#x3D;&quot;Focus the text input&quot;</span><br><span class="line">        onClick&#x3D;&#123;handleClick&#125;</span><br><span class="line">      &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将-DOM-Refs-暴露给父组件"><a href="#将-DOM-Refs-暴露给父组件" class="headerlink" title="将 DOM Refs 暴露给父组件"></a>将 DOM Refs 暴露给父组件</h3><blockquote>
+<p>在极少数情况下，你可能希望在父组件中引用子节点的 DOM 节点。通常不建议这样做，因为它会打破组件的封装，但它偶尔可用于触发焦点或测量子 DOM 节点的大小或位置。</p>
+</blockquote>
+<h3 id="回调-Refs"><a href="#回调-Refs" class="headerlink" title="回调 Refs"></a>回调 Refs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line"></span><br><span class="line">    this.textInput &#x3D; null;</span><br><span class="line">    this.setTextInputRef &#x3D; element &#x3D;&gt; &#123;      this.textInput &#x3D; element;    &#125;;</span><br><span class="line">    this.focusTextInput &#x3D; () &#x3D;&gt; &#123;      &#x2F;&#x2F; 使用原生 DOM API 使 text 输入框获得焦点      if (this.textInput) this.textInput.focus();    &#125;;  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    &#x2F;&#x2F; 组件挂载后，让文本框自动获得焦点</span><br><span class="line">    this.focusTextInput();  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    &#x2F;&#x2F; 使用 &#96;ref&#96; 的回调函数将 text 输入框 DOM 节点的引用存储到 React</span><br><span class="line">    &#x2F;&#x2F; 实例上（比如 this.textInput）</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;text&quot;</span><br><span class="line">          ref&#x3D;&#123;this.setTextInputRef&#125;        &#x2F;&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;button&quot;</span><br><span class="line">          value&#x3D;&quot;Focus the text input&quot;</span><br><span class="line">          onClick&#x3D;&#123;this.focusTextInput&#125;        &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="23-Render-Props"><a href="#23-Render-Props" class="headerlink" title="23.Render Props"></a>23.Render Props</h1><blockquote>
+<p>术语 <a target="_blank" rel="noopener" href="https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce">“render prop”</a> 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术</p>
+<p>具有 render prop 的组件接受一个返回 React 元素的函数，并在组件内部通过调用此函数来实现自己的渲染逻辑。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div style&#x3D;&#123;&#123; height: &#39;100vh&#39; &#125;&#125; onMouseMove&#x3D;&#123;this.handleMouseMove&#125;&gt;</span><br><span class="line"></span><br><span class="line">        &#123;&#x2F;*</span><br><span class="line">          使用 &#96;render&#96;prop 动态决定要渲染的内容，</span><br><span class="line">          而不是给出一个 &lt;Mouse&gt; 渲染结果的静态表示</span><br><span class="line">        *&#x2F;&#125;</span><br><span class="line">        &#123;this.props.render(this.state)&#125;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#x2F;&#x2F;render prop 是一个用于告知组件需要渲染什么内容的函数 prop。</span><br><span class="line">class MouseTracker extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;移动鼠标!&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;Mouse render&#x3D;&#123;mouse &#x3D;&gt; (</span><br><span class="line">          &lt;Cat mouse&#x3D;&#123;mouse&#125; &#x2F;&gt;</span><br><span class="line">        )&#125;&#x2F;&gt;</span><br><span class="line">        &lt;Mouse children&#x3D;&#123;mouse &#x3D;&gt; (</span><br><span class="line"> 				 &lt;p&gt;鼠标的位置是 &#123;mouse.x&#125;，&#123;mouse.y&#125;&lt;&#x2F;p&gt;</span><br><span class="line">				)&#125;&#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="24-PropTypes"><a href="#24-PropTypes" class="headerlink" title="24.PropTypes"></a>24.PropTypes</h2><ul>
 <li>组件的属性可以接受任意值，字符串、对象、函数等等都可以。有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">      <span class="class"><span class="keyword">class</span> <span class="title">MyTitle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> propTypes = &#123;</span><br><span class="line">          title: PropTypes.string.isRequired,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> &#123;this.props.title&#125; <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      ReactDOM.render(</span><br><span class="line">        &lt;MyTitle title=&#123;data&#125; /&gt;,</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">&#x27;example&#x27;</span>)</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
 
-<h3 id="7-获取真实的DOM节点"><a href="#7-获取真实的DOM节点" class="headerlink" title="7.获取真实的DOM节点"></a>7.获取真实的DOM节点</h3><ul>
+<h3 id="获取真实的DOM节点"><a href="#获取真实的DOM节点" class="headerlink" title="获取真实的DOM节点"></a>获取真实的DOM节点</h3><ul>
 <li><p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 DOM diff ，它可以极大提高网页的性能表现。但是，有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性.（ref是组件的特殊属性，组件被渲染后，指向组件的一个引用。）</p>
 </li>
 <li><p>需要注意的是，由于 this.refs.[refName] 属性获取的是真实 DOM ，所以必须等到虚拟 DOM 插入文档以后，才能使用这个属性，否则会报错。上面代码中，通过为组件指定 Click 事件的回调函数，确保了只有等到真实 DOM 发生 Click 事件之后，才会读取 this.refs.[refName] 属性</p>
 </li>
 </ul>
-<h3 id="8-this-state"><a href="#8-this-state" class="headerlink" title="8.this.state"></a>8.this.state</h3><ul>
-<li>组件免不了要与用户互动，React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI</li>
-</ul>
-<h3 id="9-表单"><a href="#9-表单" class="headerlink" title="9. 表单"></a>9. 表单</h3><ul>
-<li>用户在表单填入的内容，属于用户跟组件的互动，所以不能用 this.props 读取</li>
-<li>文本输入框的值，不能用 this.props.value 读取，而要定义一个 onChange 事件的回调函数，通过 event.target.value 读取用户输入的值。textarea 元素、select元素、radio元素都属于这种情况。</li>
-</ul>
-<h3 id="10-组件的生命周期"><a href="#10-组件的生命周期" class="headerlink" title="10.组件的生命周期"></a>10.组件的生命周期</h3><ul>
-<li>Mounting：已插入真实 DOM</li>
-<li>Updating：正在被重新渲染</li>
-<li>Unmounting：已移出真实 DOM</li>
-<li>React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数</li>
-<li>componentWillMount()</li>
-<li>componentDidMount()</li>
-<li>componentWillUpdate(object nextProps, object nextState)</li>
-<li>componentDidUpdate(object prevProps, object prevState)</li>
-<li>componentWillUnmount()</li>
-<li>此外，React 还提供两种特殊状态的处理函数。</li>
-<li>componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</li>
-<li>shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</li>
-</ul>
-<h3 id="11-AJAX"><a href="#11-AJAX" class="headerlink" title="11.AJAX"></a>11.AJAX</h3><ul>
-<li>组件的数据来源，通常是通过 Ajax 请求从服务器获取，可以使用 componentDidMount 方法设置 Ajax 请求，等到请求成功，再用 this.setState 方法重新渲染 UI</li>
-</ul>
+<h2 id="Web-Components"><a href="#Web-Components" class="headerlink" title="Web Components"></a>Web Components</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class HelloMessage extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;div&gt;Hello &lt;x-search&gt;&#123;this.props.name&#125;&lt;&#x2F;x-search&gt;!&lt;&#x2F;div&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>Web Components 通常暴露的是命令式 API。例如，Web Components 的组件 <code>video</code> 可能会公开 <code>play()</code> 和 <code>pause()</code> 方法。要访问 Web Components 的命令式 API，你需要使用 <code>ref</code> 直接与 DOM 节点进行交互。如果你使用的是第三方 Web Components，那么最好的解决方案是编写 React 组件包装该 Web Components。</p>
+<p>Web Components 触发的事件可能无法通过 React 渲染树正确的传递。 你需要在 React 组件中手动添加事件处理器来处理这些事件。</p>
+</blockquote>
+<h3 id="React-Suspense尚未支持"><a href="#React-Suspense尚未支持" class="headerlink" title="React.Suspense尚未支持"></a><code>React.Suspense</code>尚未支持</h3><p><code>React.Suspense</code> 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 <code>&lt;React.Suspense&gt;</code> 支持的<strong>唯一</strong>用例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 该组件是动态加载的</span><br><span class="line">const OtherComponent &#x3D; React.lazy(() &#x3D;&gt; import(&#39;.&#x2F;OtherComponent&#39;));</span><br><span class="line"></span><br><span class="line">function MyComponent() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &#x2F;&#x2F; 显示 &lt;Spinner&gt; 组件直至 OtherComponent 加载完成</span><br><span class="line">    &lt;React.Suspense fallback&#x3D;&#123;&lt;Spinner &#x2F;&gt;&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;OtherComponent &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;React.Suspense&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="何时使用-Context"><a href="#何时使用-Context" class="headerlink" title="何时使用 Context"></a>何时使用 Context</h2><blockquote>
+<p>Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法</p>
+<p>Context 设计目的是为了共享那些对于一个组件树而言是“全局”的数据，例如当前认证的用户、主题或首选语言。举个例子，在下面的代码中，我们通过一个 “theme” 属性手动调整一个按钮组件的样式：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class App extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;Toolbar theme&#x3D;&quot;dark&quot; &#x2F;&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Toolbar(props) &#123;</span><br><span class="line">  &#x2F;&#x2F; Toolbar 组件接受一个额外的“theme”属性，然后传递给 ThemedButton 组件。</span><br><span class="line">  &#x2F;&#x2F; 如果应用中每一个单独的按钮都需要知道 theme 的值，这会是件很麻烦的事，</span><br><span class="line">  &#x2F;&#x2F; 因为必须将这个值层层传递所有组件。</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ThemedButton theme&#x3D;&#123;props.theme&#125; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ThemedButton extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;Button theme&#x3D;&#123;this.props.theme&#125; &#x2F;&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 context, 我们可以避免通过中间元素传递 props：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Context 可以让我们无须明确地传遍每一个组件，就能将值深入传递进组件树。</span><br><span class="line">&#x2F;&#x2F; 为当前的 theme 创建一个 context（“light”为默认值）。</span><br><span class="line">const ThemeContext &#x3D; React.createContext(&#39;light&#39;);</span><br><span class="line">class App extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    &#x2F;&#x2F; 使用一个 Provider 来将当前的 theme 传递给以下的组件树。</span><br><span class="line">    &#x2F;&#x2F; 无论多深，任何组件都能读取这个值。</span><br><span class="line">    &#x2F;&#x2F; 在这个例子中，我们将 “dark” 作为当前的值传递下去。</span><br><span class="line"></span><br><span class="line">return (</span><br><span class="line">      &lt;ThemeContext.Provider value&#x3D;&quot;dark&quot;&gt;</span><br><span class="line">        &lt;Toolbar &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;ThemeContext.Provider&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 中间的组件再也不必指明往下传递 theme 了。</span><br><span class="line">function Toolbar() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ThemedButton &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ThemedButton extends React.Component &#123;</span><br><span class="line">  &#x2F;&#x2F; 指定 contextType 读取当前的 theme context。</span><br><span class="line">  &#x2F;&#x2F; React 会往上找到最近的 theme Provider，然后使用它的值。</span><br><span class="line">  &#x2F;&#x2F; 在这个例子中，当前的 theme 值为 “dark”。</span><br><span class="line">  static contextType &#x3D; ThemeContext;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;Button theme&#x3D;&#123;this.context&#125; &#x2F;&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/26/React/" data-id="ckr1v9o9m0005iqycdzk06vm7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/26/React/" data-id="cktu2xnvz000pweycg7ch2z0c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +525,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -215,23 +538,23 @@
       <ul>
         
           <li>
-            <a href="/2021/03/01/React%E9%9D%A2%E8%AF%95%E9%A2%98/">(no title)</a>
+            <a href="/2021/08/22/vue3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/HTML5%E6%96%B0%E7%89%B9%E6%80%A7/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/webscoket/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/29/axios/">(no title)</a>
           </li>
         
           <li>
             <a href="/2021/03/01/Vue-Router/">vue-router</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/01/Git%E5%92%8CSvn/">Git 和 Svn</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/01/Vuex/">vuex</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/19/Sass/">Sass使用指南</a>
           </li>
         
       </ul>
