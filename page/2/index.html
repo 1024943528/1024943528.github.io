@@ -201,135 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/02/Redux/" data-id="cktu4gyjm0007qayccv3z464w" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-React-Hook" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/01/React-Hook/" class="article-date">
-  <time datetime="2021-01-01T05:09:28.000Z" itemprop="datePublished">2021-01-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/01/React-Hook/">React-Router</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Hook简介"><a href="#1-Hook简介" class="headerlink" title="1.Hook简介"></a>1.Hook简介</h2><blockquote>
-<p>它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。</p>
-<p>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">function Example() &#123;</span><br><span class="line">  &#x2F;&#x2F; 声明一个新的叫做 “count” 的 state 变量 ,当前状态和一个让你更新它的函数</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  const [fruit, setFruit] &#x3D; useState(&#39;banana&#39;);</span><br><span class="line">  const [todos, setTodos] &#x3D; useState([&#123; text: &#39;Learn Hooks&#39; &#125;]);</span><br><span class="line">  const [func, setfunc] &#x3D; useState(() &#x3D;&gt; &#123;</span><br><span class="line">		return &#123;name: &#39;111&#39;&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为“副作用”，或者简称为“作用”。</p>
-<p><code>useEffect</code> 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 <code>componentDidMount</code>、<code>componentDidUpdate</code> 和 <code>componentWillUnmount</code> 具有相同的用途，只不过被合并成了一个 API</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect &#125; from &#39;react&#39;;</span><br><span class="line">function Example() &#123;</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  &#x2F;&#x2F; 相当于 componentDidMount 和 componentDidUpdate:  </span><br><span class="line">  useEffect(() &#x3D;&gt; &#123;   </span><br><span class="line">    &#x2F;&#x2F; 使用浏览器的 API 更新页面标题  </span><br><span class="line">    document.title &#x3D; &#96;You clicked $&#123;count&#125; times&#96;;</span><br><span class="line">  &#125;);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="hook使用规则"><a href="#hook使用规则" class="headerlink" title="hook使用规则"></a>hook使用规则</h4><p>Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：</p>
-<ul>
-<li>只能在<strong>函数最外层</strong>调用 Hook。不要在循环、条件判断或者子函数中调用。</li>
-<li>只能在 <strong>React 的函数组件</strong>中调用 Hook。不要在其他 JavaScript 函数中调用。</li>
-</ul>
-<h4 id="自定义hook"><a href="#自定义hook" class="headerlink" title="自定义hook"></a>自定义hook</h4><blockquote>
-<p>组件之间重用一些状态逻辑</p>
-<blockquote>
-<p>高阶组件</p>
-<p>render props</p>
-</blockquote>
-</blockquote>
-<h2 id="1-useState"><a href="#1-useState" class="headerlink" title="1.useState"></a>1.useState</h2><h2 id="2-useEffect"><a href="#2-useEffect" class="headerlink" title="2.useEffect"></a>2.useEffect</h2><p>1.componentDidMount ,componentDidUpdate,componentWillUnMount </p>
-<p>2.数据获取、订阅或者手动修改过 DOM（副作用）dom操作，数据请求，组件更新</p>
-<p>3.useeffect(回调函数，数组（可不写）)</p>
-<p>4.无阻塞更新</p>
-<p>5.多个useeffect</p>
-<p>6.useeffect为什么在组件函数内部执行？（可以获取props和state，采用闭包的形式）</p>
-<h2 id="3-useRef"><a href="#3-useRef" class="headerlink" title="3.useRef"></a>3.useRef</h2><h2 id="4-useContext"><a href="#4-useContext" class="headerlink" title="4.useContext"></a>4.useContext</h2><blockquote>
-<p><code>useContext(MyContext)</code> 只是让你能够<em>读取</em> context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 <code>&lt;MyContext.Provider&gt;</code> 来为下层组件<em>提供</em> context。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const themes &#x3D; &#123;</span><br><span class="line">  light: &#123;</span><br><span class="line">    foreground: &quot;#000000&quot;,</span><br><span class="line">    background: &quot;#eeeeee&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  dark: &#123;</span><br><span class="line">    foreground: &quot;#ffffff&quot;,</span><br><span class="line">    background: &quot;#222222&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const ThemeContext &#x3D; React.createContext(themes.light);</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;ThemeContext.Provider value&#x3D;&#123;themes.dark&#125;&gt;</span><br><span class="line">      &lt;Toolbar &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;ThemeContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">function Toolbar(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ThemedButton &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function ThemedButton() &#123;</span><br><span class="line">  &#x2F;&#x2F;接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值</span><br><span class="line">  const theme &#x3D; useContext(ThemeContext);</span><br><span class="line">  return (</span><br><span class="line">    &lt;button style&#x3D;&#123;&#123; background: theme.background, color: theme.foreground &#125;&#125;&gt;</span><br><span class="line">      I am styled by theme context!</span><br><span class="line">    &lt;&#x2F;button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-useMemo"><a href="#5-useMemo" class="headerlink" title="5.useMemo"></a>5.useMemo</h2><blockquote>
-<p><code>shouldcomponentupdate</code>类型，避免渲染过程中重复渲染</p>
-<p>当状态或者父组件传来的属性变化时，更新组件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;接收两个参数，第一个是函数，第二个是数组（非必填）</span><br><span class="line">const memoizedValue &#x3D; useMemo(() &#x3D;&gt; computeExpensiveValue(a, b), [a, b]);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>usememo</code>使用<code>memoization</code>来提高性能</li>
-<li><code>memoization</code>是<code>javascript</code>的一种缓存技术</li>
-</ul>
-<h2 id="6-useCallback"><a href="#6-useCallback" class="headerlink" title="6.useCallback"></a>6.useCallback</h2><blockquote>
-<p>1.避免组件重复渲染</p>
-<p>2.控制组件什么时候更新</p>
-</blockquote>
-<ul>
-<li>useCallback缓存的是一个函数 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;接收两个参数，第一个是函数，第二个是数组（非必填）</span><br><span class="line">&#x2F;&#x2F;函数不会更新 </span><br><span class="line">const memoizedCallback &#x3D; useCallback(</span><br><span class="line">  () &#x3D;&gt; &#123;</span><br><span class="line">    doSomething(a, b);</span><br><span class="line">  &#125;,</span><br><span class="line">  [a, b],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="7-useimperativeHandle"><a href="#7-useimperativeHandle" class="headerlink" title="7.useimperativeHandle"></a>7.useimperativeHandle</h2><blockquote>
-<p>可以让你在使用 <code>ref</code> 时自定义暴露给父组件的实例值。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.REF 2.函数，3.数组？</span><br><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function FancyInput(props, ref) &#123;</span><br><span class="line">  const inputRef &#x3D; useRef();</span><br><span class="line">  useImperativeHandle(ref, () &#x3D;&gt; (&#123;</span><br><span class="line">    focus: () &#x3D;&gt; &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">  return &lt;input ref&#x3D;&#123;inputRef&#125; ... &#x2F;&gt;;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput &#x3D; forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-useLayoutEffect"><a href="#8-useLayoutEffect" class="headerlink" title="8.useLayoutEffect"></a>8.useLayoutEffect</h2><blockquote>
-<p>与useEffect作用相同，再组件生成过程中进行一些操作</p>
-<p>执行的时间不同</p>
-<p><code>useLayoutEffect</code>    在浏览器绘制之前执行</p>
-<p><code>useEffect</code>在<code>componentdidmount</code>以后执行</p>
-</blockquote>
-<h2 id="9-useReducer"><a href="#9-useReducer" class="headerlink" title="9.useReducer"></a>9.useReducer</h2><blockquote>
-<p>在某些场景下，<code>useReducer</code> 会比 <code>useState</code> 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 <code>useReducer</code> 还能给那些会触发深更新的组件做性能优化，因为<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down">你可以向子组件传递 <code>dispatch</code> 而不是回调函数</a> 。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.函数reducer,2.初始值，3.init</span><br><span class="line">&#x2F;&#x2F;返回一个数组 [state, dispatch] </span><br><span class="line">const [state, dispatch] &#x3D; useReducer(reducer, initialArg, init);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const initialState &#x3D; &#123;count: 0&#125;;</span><br><span class="line"></span><br><span class="line">function reducer(state, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#39;increment&#39;:</span><br><span class="line">      return &#123;count: state.count + 1&#125;;</span><br><span class="line">    case &#39;decrement&#39;:</span><br><span class="line">      return &#123;count: state.count - 1&#125;;</span><br><span class="line">    default:</span><br><span class="line">      throw new Error();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Counter() &#123;</span><br><span class="line">  &#x2F;&#x2F;reducer (state, action) &#x3D;&gt; newState</span><br><span class="line">  &#x2F;&#x2F;返回当前的 state 以及与其配套的 dispatch 方法。</span><br><span class="line">  const [state, dispatch] &#x3D; useReducer(reducer, initialState);</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; dispatch(&#123;type: &#39;decrement&#39;&#125;)&#125;&gt;-&lt;&#x2F;button&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; dispatch(&#123;type: &#39;increment&#39;&#125;)&#125;&gt;+&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="10-usedebugvalue"><a href="#10-usedebugvalue" class="headerlink" title="10.usedebugvalue"></a>10.usedebugvalue</h2><blockquote>
-<p><code>useDebugValue</code> 可用于在 React 开发者工具中显示自定义 hook 的标签。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function useFriendStatus(friendID) &#123;</span><br><span class="line">  const [isOnline, setIsOnline] &#x3D; useState(null);</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">  &#x2F;&#x2F; 在开发者工具中的这个 Hook 旁边显示标签 </span><br><span class="line">  &#x2F;&#x2F; e.g. &quot;FriendStatus: Online&quot; </span><br><span class="line">  useDebugValue(isOnline ? &#39;Online&#39; : &#39;Offline&#39;);</span><br><span class="line">  return isOnline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(date, date &#x3D;&gt; date.toDateString());</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="11-自定义hook"><a href="#11-自定义hook" class="headerlink" title="11.自定义hook"></a>11.自定义hook</h2><blockquote>
-<p><strong>自定义 Hook 是一个函数，其名称以 “<code>use</code>” 开头，函数内部可以调用其他的 Hook。</strong></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/01/React-Hook/" data-id="cktu4gyjl0005qayc15dv12pd" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/02/Redux/" data-id="ckub19is50009dxgrhreb9npl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,7 +366,135 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/01/React-Router/" data-id="cktu4gyjm0006qaycf5u77ppb" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/01/React-Router/" data-id="ckub19is10005dxgrcllgdje2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-React-Hook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/01/React-Hook/" class="article-date">
+  <time datetime="2021-01-01T05:09:28.000Z" itemprop="datePublished">2021-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/01/React-Hook/">React-Router</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Hook简介"><a href="#1-Hook简介" class="headerlink" title="1.Hook简介"></a>1.Hook简介</h2><blockquote>
+<p>它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。</p>
+<p>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">function Example() &#123;</span><br><span class="line">  &#x2F;&#x2F; 声明一个新的叫做 “count” 的 state 变量 ,当前状态和一个让你更新它的函数</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  const [fruit, setFruit] &#x3D; useState(&#39;banana&#39;);</span><br><span class="line">  const [todos, setTodos] &#x3D; useState([&#123; text: &#39;Learn Hooks&#39; &#125;]);</span><br><span class="line">  const [func, setfunc] &#x3D; useState(() &#x3D;&gt; &#123;</span><br><span class="line">		return &#123;name: &#39;111&#39;&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为“副作用”，或者简称为“作用”。</p>
+<p><code>useEffect</code> 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 <code>componentDidMount</code>、<code>componentDidUpdate</code> 和 <code>componentWillUnmount</code> 具有相同的用途，只不过被合并成了一个 API</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect &#125; from &#39;react&#39;;</span><br><span class="line">function Example() &#123;</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  &#x2F;&#x2F; 相当于 componentDidMount 和 componentDidUpdate:  </span><br><span class="line">  useEffect(() &#x3D;&gt; &#123;   </span><br><span class="line">    &#x2F;&#x2F; 使用浏览器的 API 更新页面标题  </span><br><span class="line">    document.title &#x3D; &#96;You clicked $&#123;count&#125; times&#96;;</span><br><span class="line">  &#125;);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="hook使用规则"><a href="#hook使用规则" class="headerlink" title="hook使用规则"></a>hook使用规则</h4><p>Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：</p>
+<ul>
+<li>只能在<strong>函数最外层</strong>调用 Hook。不要在循环、条件判断或者子函数中调用。</li>
+<li>只能在 <strong>React 的函数组件</strong>中调用 Hook。不要在其他 JavaScript 函数中调用。</li>
+</ul>
+<h4 id="自定义hook"><a href="#自定义hook" class="headerlink" title="自定义hook"></a>自定义hook</h4><blockquote>
+<p>组件之间重用一些状态逻辑</p>
+<blockquote>
+<p>高阶组件</p>
+<p>render props</p>
+</blockquote>
+</blockquote>
+<h2 id="1-useState"><a href="#1-useState" class="headerlink" title="1.useState"></a>1.useState</h2><h2 id="2-useEffect"><a href="#2-useEffect" class="headerlink" title="2.useEffect"></a>2.useEffect</h2><p>1.componentDidMount ,componentDidUpdate,componentWillUnMount </p>
+<p>2.数据获取、订阅或者手动修改过 DOM（副作用）dom操作，数据请求，组件更新</p>
+<p>3.useeffect(回调函数，数组（可不写）)</p>
+<p>4.无阻塞更新</p>
+<p>5.多个useeffect</p>
+<p>6.useeffect为什么在组件函数内部执行？（可以获取props和state，采用闭包的形式）</p>
+<h2 id="3-useRef"><a href="#3-useRef" class="headerlink" title="3.useRef"></a>3.useRef</h2><h2 id="4-useContext"><a href="#4-useContext" class="headerlink" title="4.useContext"></a>4.useContext</h2><blockquote>
+<p><code>useContext(MyContext)</code> 只是让你能够<em>读取</em> context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 <code>&lt;MyContext.Provider&gt;</code> 来为下层组件<em>提供</em> context。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const themes &#x3D; &#123;</span><br><span class="line">  light: &#123;</span><br><span class="line">    foreground: &quot;#000000&quot;,</span><br><span class="line">    background: &quot;#eeeeee&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  dark: &#123;</span><br><span class="line">    foreground: &quot;#ffffff&quot;,</span><br><span class="line">    background: &quot;#222222&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const ThemeContext &#x3D; React.createContext(themes.light);</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;ThemeContext.Provider value&#x3D;&#123;themes.dark&#125;&gt;</span><br><span class="line">      &lt;Toolbar &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;ThemeContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">function Toolbar(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ThemedButton &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function ThemedButton() &#123;</span><br><span class="line">  &#x2F;&#x2F;接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值</span><br><span class="line">  const theme &#x3D; useContext(ThemeContext);</span><br><span class="line">  return (</span><br><span class="line">    &lt;button style&#x3D;&#123;&#123; background: theme.background, color: theme.foreground &#125;&#125;&gt;</span><br><span class="line">      I am styled by theme context!</span><br><span class="line">    &lt;&#x2F;button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-useMemo"><a href="#5-useMemo" class="headerlink" title="5.useMemo"></a>5.useMemo</h2><blockquote>
+<p><code>shouldcomponentupdate</code>类型，避免渲染过程中重复渲染</p>
+<p>当状态或者父组件传来的属性变化时，更新组件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;接收两个参数，第一个是函数，第二个是数组（非必填）</span><br><span class="line">const memoizedValue &#x3D; useMemo(() &#x3D;&gt; computeExpensiveValue(a, b), [a, b]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>usememo</code>使用<code>memoization</code>来提高性能</li>
+<li><code>memoization</code>是<code>javascript</code>的一种缓存技术</li>
+</ul>
+<h2 id="6-useCallback"><a href="#6-useCallback" class="headerlink" title="6.useCallback"></a>6.useCallback</h2><blockquote>
+<p>1.避免组件重复渲染</p>
+<p>2.控制组件什么时候更新</p>
+</blockquote>
+<ul>
+<li>useCallback缓存的是一个函数 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;接收两个参数，第一个是函数，第二个是数组（非必填）</span><br><span class="line">&#x2F;&#x2F;函数不会更新 </span><br><span class="line">const memoizedCallback &#x3D; useCallback(</span><br><span class="line">  () &#x3D;&gt; &#123;</span><br><span class="line">    doSomething(a, b);</span><br><span class="line">  &#125;,</span><br><span class="line">  [a, b],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-useimperativeHandle"><a href="#7-useimperativeHandle" class="headerlink" title="7.useimperativeHandle"></a>7.useimperativeHandle</h2><blockquote>
+<p>可以让你在使用 <code>ref</code> 时自定义暴露给父组件的实例值。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.REF 2.函数，3.数组？</span><br><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function FancyInput(props, ref) &#123;</span><br><span class="line">  const inputRef &#x3D; useRef();</span><br><span class="line">  useImperativeHandle(ref, () &#x3D;&gt; (&#123;</span><br><span class="line">    focus: () &#x3D;&gt; &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">  return &lt;input ref&#x3D;&#123;inputRef&#125; ... &#x2F;&gt;;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput &#x3D; forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-useLayoutEffect"><a href="#8-useLayoutEffect" class="headerlink" title="8.useLayoutEffect"></a>8.useLayoutEffect</h2><blockquote>
+<p>与useEffect作用相同，再组件生成过程中进行一些操作</p>
+<p>执行的时间不同</p>
+<p><code>useLayoutEffect</code>    在浏览器绘制之前执行</p>
+<p><code>useEffect</code>在<code>componentdidmount</code>以后执行</p>
+</blockquote>
+<h2 id="9-useReducer"><a href="#9-useReducer" class="headerlink" title="9.useReducer"></a>9.useReducer</h2><blockquote>
+<p>在某些场景下，<code>useReducer</code> 会比 <code>useState</code> 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 <code>useReducer</code> 还能给那些会触发深更新的组件做性能优化，因为<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down">你可以向子组件传递 <code>dispatch</code> 而不是回调函数</a> 。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.函数reducer,2.初始值，3.init</span><br><span class="line">&#x2F;&#x2F;返回一个数组 [state, dispatch] </span><br><span class="line">const [state, dispatch] &#x3D; useReducer(reducer, initialArg, init);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const initialState &#x3D; &#123;count: 0&#125;;</span><br><span class="line"></span><br><span class="line">function reducer(state, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#39;increment&#39;:</span><br><span class="line">      return &#123;count: state.count + 1&#125;;</span><br><span class="line">    case &#39;decrement&#39;:</span><br><span class="line">      return &#123;count: state.count - 1&#125;;</span><br><span class="line">    default:</span><br><span class="line">      throw new Error();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Counter() &#123;</span><br><span class="line">  &#x2F;&#x2F;reducer (state, action) &#x3D;&gt; newState</span><br><span class="line">  &#x2F;&#x2F;返回当前的 state 以及与其配套的 dispatch 方法。</span><br><span class="line">  const [state, dispatch] &#x3D; useReducer(reducer, initialState);</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; dispatch(&#123;type: &#39;decrement&#39;&#125;)&#125;&gt;-&lt;&#x2F;button&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; dispatch(&#123;type: &#39;increment&#39;&#125;)&#125;&gt;+&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="10-usedebugvalue"><a href="#10-usedebugvalue" class="headerlink" title="10.usedebugvalue"></a>10.usedebugvalue</h2><blockquote>
+<p><code>useDebugValue</code> 可用于在 React 开发者工具中显示自定义 hook 的标签。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function useFriendStatus(friendID) &#123;</span><br><span class="line">  const [isOnline, setIsOnline] &#x3D; useState(null);</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">  &#x2F;&#x2F; 在开发者工具中的这个 Hook 旁边显示标签 </span><br><span class="line">  &#x2F;&#x2F; e.g. &quot;FriendStatus: Online&quot; </span><br><span class="line">  useDebugValue(isOnline ? &#39;Online&#39; : &#39;Offline&#39;);</span><br><span class="line">  return isOnline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(date, date &#x3D;&gt; date.toDateString());</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="11-自定义hook"><a href="#11-自定义hook" class="headerlink" title="11.自定义hook"></a>11.自定义hook</h2><blockquote>
+<p><strong>自定义 Hook 是一个函数，其名称以 “<code>use</code>” 开头，函数内部可以调用其他的 Hook。</strong></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/01/React-Hook/" data-id="ckub19is20006dxgrdkdt9r7o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -904,7 +904,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/26/React/" data-id="cktu4gykm000pqaychhi3bdtu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/26/React/" data-id="ckub19it4000pdxgrgbhyhv5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -936,19 +936,11 @@ this.handleClick = this.handleClick.bind(this);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="提交步骤"><a href="#提交步骤" class="headerlink" title="提交步骤"></a>提交步骤</h3><ul>
-<li><p>hexo g(页面初始化)</p>
-</li>
-<li><p>hexo d (代码上传)</p>
-</li>
-<li><p>github账号（1024943528）</p>
-</li>
-<li><p>sudo su</p>
-</li>
-<li><p>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</li>
-<li><p>hexo d</p>
-</li>
+        <h3 id="提交步骤"><a href="#提交步骤" class="headerlink" title="提交步骤"></a>提交步骤</h3><p>(更新ssh密钥后可以调剂)</p>
+<ul>
+<li>sudo su</li>
+<li>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</li>
+<li>hexo d</li>
 </ul>
 <h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><ul>
 <li>  . 匹配楚换行符以外的任意字符</li>
@@ -1037,7 +1029,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cktu4gyjy000jqayc4osw2m2d" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="ckub19isd000gdxgrgb961fps" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1204,7 +1196,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/TS/" data-id="cktu4gyjp000aqaycgvztglxa" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/TS/" data-id="ckub19is40008dxgrcem88dpi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https-www-tslang-cn-docs-handbook-type-inference-html/" rel="tag">https://www.tslang.cn/docs/handbook/type-inference.html</a></li></ul>
@@ -1260,7 +1252,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="cktu4gyjx000hqaycgoxygnsm" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="ckub19ise000hdxgr0bo21y70" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1367,7 +1359,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/WEBPACK/" data-id="cktu4gyjs000cqayc05ebb81o" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/WEBPACK/" data-id="ckub19is8000bdxgr9db1cjyn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1547,7 +1539,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/ES6/" data-id="cktu4gyjh0002qayc57a5dyo6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/ES6/" data-id="ckub19irx0003dxgr9rhp5892" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1708,7 +1700,7 @@ this.handleClick = this.handleClick.bind(this);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cktu4gyjt000dqayc98h5a84c" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="ckub19isc000fdxgr66pu00p8" class="article-share-link">Share</a>
       
       
     </footer>
